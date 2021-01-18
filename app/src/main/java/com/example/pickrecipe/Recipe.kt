@@ -1,7 +1,7 @@
 package com.example.pickrecipe
 
 class Recipe {
-
+    //Test comment to github
     private var ingredientsList = ArrayList<Ingredient>();
     private var rate: Double = 0.0;
     private lateinit var description: String;

@@ -3,6 +3,7 @@ package com.example.pickrecipe
 import java.io.FileDescriptor
 
 class Ingredient {
+    //Test comment to github
     private lateinit var ingredientDescription: String;
     private lateinit var unity: String;
     private var quantity: Int = 0;

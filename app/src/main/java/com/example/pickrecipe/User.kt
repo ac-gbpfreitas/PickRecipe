@@ -1,7 +1,7 @@
 package com.example.pickrecipe
 
 class User {
-
+    //Test comment to github
     private lateinit var firstName: String;
     private lateinit var lastName: String;
     private lateinit var username: String
