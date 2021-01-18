@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PickRecipe</string>
+    <string name="recipeTitle">Recipe Title</string>
+    <string name="recipeDescription">Recipe Description</string>
+    <string name="recipeRate">5.0</string>
+    <string name="imgDescription">Recipe Description</string>
+</resources>
