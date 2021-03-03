@@ -1,12 +1,22 @@
-package com.example.pickrecipe
+package com.example.pickrecipe.model
 
 import java.io.FileDescriptor
 
 class Ingredient {
-    //Test comment to github
+
+    private var ingredientId : Int = 0;
     private lateinit var ingredientDescription: String;
     private lateinit var unity: String;
     private var quantity: Int = 0;
+    private var glutenFree: Boolean = false;
+
+
+    public fun getIngredientId() : Int {
+        return this.ingredientId;
+    }
+    public fun setIngredientId(newId : Int){
+        this.ingredientId = newId;
+    }
 
     public fun getUnity(): String {
         return this.unity;
@@ -27,6 +37,13 @@ class Ingredient {
     }
     public fun setIngredientDescription(newDescription: String){
         this.ingredientDescription = newDescription;
+    }
+
+    public fun getGlutenFree(): Boolean{
+        return this.glutenFree;
+    }
+    public fun setGlutenFree(gluten: Boolean){
+        this.glutenFree = true;
     }
 
 }

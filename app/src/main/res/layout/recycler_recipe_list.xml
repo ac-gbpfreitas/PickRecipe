@@ -1,89 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollRecipeList"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeList"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/recipeItem"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="4dp"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:weightSum="5.5">
+            <ImageView
+                android:id="@+id/imageViewDish"
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                tools:srcCompat="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/recipePic"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="4"
-                    android:contentDescription="@string/imgDescription"
-                    android:scaleType="centerCrop" />
+            <ImageView
+                android:id="@+id/imageViewStar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:alpha="0.25"
+                app:srcCompat="@drawable/star" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:baselineAligned="false"
-                    android:weightSum="2">
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="36sp" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.3"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+        <TextView
+            android:id="@+id/textViewDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18sp" />
 
-                        <TextView
-                            android:id="@+id/recipeTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:text="@string/recipeTitle"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/recipeDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:text="@string/recipeDescription"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".7"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/recipeRate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/recipeRate"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_700"
-                            android:textSize="25sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/textViewRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="24sp" />
     </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

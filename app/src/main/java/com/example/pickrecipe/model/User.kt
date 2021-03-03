@@ -1,10 +1,13 @@
-package com.example.pickrecipe
+package com.example.pickrecipe.model
+
+import com.example.pickrecipe.model.Recipe
 
 class User {
-    //Test comment to github
+
     private lateinit var firstName: String;
     private lateinit var lastName: String;
     private lateinit var username: String
+    private lateinit var category: String;
     private var profilePic: Int = 0;
     private var bookmarksRecipe: ArrayList<Recipe> = arrayListOf();
     private var userRecipesGallery: ArrayList<Int> = arrayListOf();
@@ -29,6 +32,13 @@ class User {
     }
     public fun setUsername(login: String){
         this.username = login;
+    }
+
+    public fun getCategory(): String{
+        return this.category;
+    }
+    public fun setCategory(newCategory: String){
+        this.category = newCategory;
     }
 
     public fun getProfilePic(): Int{
