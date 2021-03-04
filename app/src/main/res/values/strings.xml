@@ -16,4 +16,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="favorites">Favorites</string>
+    <string name="pantry">Pantry</string>
+    <string name="groceryStores">Find Grocery Stores</string>
+    <string name="pickYourRecipe">Pick Your Recipe</string>
+    <string name="loggedAs"><![CDATA[Logged as: <username>]]></string>
 </resources>

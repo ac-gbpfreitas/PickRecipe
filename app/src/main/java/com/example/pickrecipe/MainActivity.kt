@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pickrecipe.fragments.RecipeAdapter
+import com.example.pickrecipe.adapters.RecipeAdapter
 
 class MainActivity : AppCompatActivity() {
     var linearLayout: RecyclerView.LayoutManager? = null

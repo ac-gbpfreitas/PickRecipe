@@ -1,4 +1,4 @@
-package com.example.pickrecipe.fragments
+package com.example.pickrecipe.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
