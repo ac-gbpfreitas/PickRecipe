@@ -4,23 +4,26 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.pickrecipe.db.model.IngredientEntity
 import com.example.pickrecipe.db.model.RecipeEntity
 
-@Database(entities = [RecipeEntity::class], version = 1, exportSchema = false)
-abstract class RecipeDatabase : RoomDatabase() {
+
+@Database(entities = [RecipeEntity::class,IngredientEntity::class], version = 1, exportSchema = false)
+abstract class RecipeIngredientDatabase : RoomDatabase() {
 
     abstract fun recipeDao() : RecipeDao
+    abstract fun ingredientDao() : IngredientDao;
 
     companion object{
         @Volatile
-        private var INSTANCE : RecipeDatabase? = null;
+        private var INSTANCE : RecipeIngredientDatabase? = null;
 
-        fun getDatabase(context : Context) : RecipeDatabase?{
+        fun getDatabase(context : Context) : RecipeIngredientDatabase?{
             if(INSTANCE == null){
-                synchronized(IngredientDatabase::class){
+                synchronized(RecipeIngredientDatabase::class){
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        RecipeDatabase::class.java,
+                        RecipeIngredientDatabase::class.java,
                         "RecipeDatabase.db"
                     ).build();
                 }

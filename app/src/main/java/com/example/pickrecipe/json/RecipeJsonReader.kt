@@ -1,6 +1,7 @@
 package com.example.pickrecipe.json
 
 import android.content.Context
+import android.util.Log
 import com.example.pickrecipe.db.model.IngredientEntity
 import com.example.pickrecipe.db.model.RecipeEntity
 import com.squareup.moshi.JsonAdapter
@@ -10,9 +11,14 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class RecipeJsonReader (context : Context, fileName : String) {
 
+
+    //Refer to Json class file and create a list
     private var myRecipeJsonType = Types.newParameterizedType(List::class.java, RecipeJson::class.java)
 
+
+    //List of Recipe and Ingredient Entities - Database related
     var recipeEntities : ArrayList<RecipeEntity> = arrayListOf();
+    var ingredientEntities : ArrayList<IngredientEntity> = arrayListOf();
 
     companion object{
         var recipeInventory : ArrayList<RecipeJson> = arrayListOf();
@@ -32,20 +38,19 @@ class RecipeJsonReader (context : Context, fileName : String) {
             //Loop to get every record from json
             for((i, newRecipe) in recipeListJson.withIndex()){
 
-                //Every recipe has a list of ingredients.
-                var ingredientList : ArrayList<IngredientEntity> = arrayListOf();
-
                 //A loop to get every ingredient from the json ingredientList, from each recipe
                 for((j,newIngredient) in newRecipe.ingredients.withIndex()){
                     var ingredient = IngredientEntity(
                         newIngredient.ingredientId,
+                        newRecipe.id,
                         newIngredient.detail,
                         newIngredient.unity,
                         newIngredient.quantity,
                         newIngredient.glutenFree
                     );
+
                     //Add the ingredient to a list of ingredients
-                    ingredientList.add(ingredient)
+                    ingredientEntities.add(ingredient)
                 }
 
                 //Create a recipeEntity Object
@@ -56,12 +61,11 @@ class RecipeJsonReader (context : Context, fileName : String) {
                     newRecipe.details,
                     newRecipe.directions,
                     newRecipe.picture,
-                    //add the ingredient list to the Recipe Entity Object
-                    //ingredientList
                 );
 
+                
                 //Add the recipe object to the list
-                this.recipeEntities.add(recipe)
+                recipeEntities.add(recipe);
             }
         }
     }

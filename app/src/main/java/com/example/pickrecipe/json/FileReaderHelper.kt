@@ -1,6 +1,7 @@
 package com.example.pickrecipe.json
 
 import android.content.Context
+import android.util.Log
 import java.io.BufferedReader
 
 class FileReaderHelper {

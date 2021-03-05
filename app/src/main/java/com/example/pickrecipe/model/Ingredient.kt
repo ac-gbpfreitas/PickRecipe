@@ -10,6 +10,20 @@ class Ingredient {
     private var quantity: Int = 0;
     private var glutenFree: Boolean = false;
 
+    constructor(
+        id : Int = 0,
+        description : String = "",
+        unity : String = "",
+        qtd : Int = 0,
+        gluten : Boolean
+    ){
+        this.ingredientId = id;
+        this.ingredientDescription = description;
+        this.unity = unity;
+        this.quantity = qtd;
+        this.glutenFree = gluten
+    }
+
 
     public fun getIngredientId() : Int {
         return this.ingredientId;

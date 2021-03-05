@@ -4,7 +4,7 @@ class Recipe {
 
     private var recipeId : Int = 0;
     private var rating: Double = 0.0;
-    private var pictures: List<String> = arrayListOf();
+    private var picture : String = "";
     private var ingredientsList : List<Ingredient> = arrayListOf();
 
     private lateinit var details: String;
@@ -14,6 +14,24 @@ class Recipe {
     //private var pictures: ArrayList<Int> = arrayListOf();
     //private var videos: ArrayList<Int> = arrayListOf();
 
+    constructor(
+        id : Int,
+        title : String,
+        details : String = "",
+        directions : String = "",
+        rating : Double = 0.0,
+        pic : String = "",
+        ingredients : List<Ingredient>
+    ){
+        this.recipeId = id;
+        this.recipeTitle = title;
+        this.details = details;
+        this.directions = directions;
+        this.rating = rating;
+        this.picture = pic;
+        this.ingredientsList = ingredients
+
+    }
     public fun getRecipeId() : Int{
         return this.recipeId;
     }
@@ -57,11 +75,11 @@ class Recipe {
         this.directions = newDirection;
     }
 
-    public fun getPictures(): List<String>{
-        return this.pictures;
+    public fun getPicture(): String{
+        return this.picture;
     }
-    public fun setPictures(picsList: List<String>){
-        this.pictures = picsList;
+    public fun setPicture(pic:String){
+        this.picture = pic;
     }
 
     /*

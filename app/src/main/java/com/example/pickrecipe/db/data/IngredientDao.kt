@@ -14,18 +14,18 @@ interface IngredientDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(newIngredientEntityList : List<IngredientEntity>)
 
-    @Query("SELECT * FROM Ingredient")
+    @Query("SELECT * FROM ingredient")
     fun getAllIngredients() : LiveData<List<IngredientEntity>>
 
-    @Query("SELECT * FROM Ingredient WHERE id = :id")
+    @Query("SELECT * FROM ingredient WHERE ingredientId = :id")
     suspend fun getIngredient(id : Int) : IngredientEntity
 
     @Query("DELETE FROM ingredient")
     suspend fun deleteAllIngredients()
 
-    @Query("DELETE FROM Ingredient WHERE id = :id")
+    @Query("DELETE FROM ingredient WHERE ingredientId = :id")
     fun deleteIngredient(id : Int);
 
     @Update
-    suspend fun updateIngredientEntity(IngredientEntity : IngredientEntity)
+    suspend fun updateIngredientEntity(ingredientEntity : IngredientEntity)
 }

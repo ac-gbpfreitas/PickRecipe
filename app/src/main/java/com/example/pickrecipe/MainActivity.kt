@@ -2,21 +2,32 @@ package com.example.pickrecipe
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pickrecipe.fragments.RecipeAdapter
+import com.example.pickrecipe.fragment.RecipeAdapter
+import com.example.pickrecipe.json.JsonTester
 
 class MainActivity : AppCompatActivity() {
-    var linearLayout: RecyclerView.LayoutManager? = null
-    var newAdapter: RecipeAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main);
 
-        linearLayout = LinearLayoutManager(this);
-        //newAdapter = RecipeAdapter()
+        /*********************Tests*********************/
+        //val recyclerViewDisplay : RecyclerView = findViewById(R.id.fragment);
+        //val display = JsonTester(this,FILENAME,recyclerViewDisplay);
+        /*********************Tests*********************/
 
-        val recyclerViewDisplay : RecyclerView = findViewById(R.id.mainRecyclerRecipe);
+        setupActionBarWithNavController(findNavController(R.id.fragment))
     }
+/*
+        //Navigate between Fragments
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragment);
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+ */
 }

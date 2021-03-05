@@ -7,9 +7,15 @@ import com.example.pickrecipe.db.model.RecipeEntity
 class RecipeRepository(private val recipeDao: RecipeDao) {
 
     val readAllData : LiveData<List<RecipeEntity>> = recipeDao.getAllRecipes();
+    //private val ingredientRepository : IngredientRepository();
 
     suspend fun addRecipe(newRecipe : RecipeEntity){
         recipeDao.addRecipeEntity(newRecipe);
+        //ingredientRepository.addAllIngredients(newRecipe.ingredientsList);
+    }
+
+    suspend fun getAllRecipes(): LiveData<List<RecipeEntity>> {
+        return recipeDao.getAllRecipes();
     }
 
     suspend fun updateRecipe(recipe : RecipeEntity){

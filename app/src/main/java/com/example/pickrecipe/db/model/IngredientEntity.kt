@@ -9,9 +9,10 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "ingredient")
 data class IngredientEntity (
     @PrimaryKey
-    var id : Int,
-    var detail: String,
-    var unity: String,
-    var quantity: Int = 0,
-    var glutenFree: Boolean = false
+    var ingredientId : String,
+    var recipeId     : String = "",
+    var detail       : String,
+    var unity        : String,
+    var quantity     : Double = 0.0,
+    var glutenFree   : Boolean = false
 ) : Parcelable

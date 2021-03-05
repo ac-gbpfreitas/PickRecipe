@@ -1,5 +1,6 @@
 package com.example.pickrecipe.db.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.pickrecipe.db.data.IngredientDao
 import com.example.pickrecipe.db.data.RecipeDao
@@ -18,6 +19,10 @@ class IngredientRepository(private val ingredientDao: IngredientDao) {
         ingredientDao.updateIngredientEntity(newIngredient);
     }
 
+    suspend fun getIngredient(id : Int) : IngredientEntity {
+        return ingredientDao.getIngredient(id);
+    }
+
     fun deleteIngredient(id : Int){
         ingredientDao.deleteIngredient(id);
     }
@@ -28,5 +33,6 @@ class IngredientRepository(private val ingredientDao: IngredientDao) {
 
     suspend fun addAllIngredients(ingredientList : List<IngredientEntity>){
         ingredientDao.insertAll(ingredientList);
+//        Log.d("DATABASE_INGREDIENT",ingredientList[3].detail);
     }
 }

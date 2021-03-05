@@ -9,13 +9,14 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "recipe")
 data class  RecipeEntity (
     @PrimaryKey
-    var id : Int,
+    var recipeId : String,
     var recipeTitle : String = "",
     var rating: Double = 0.0,
     var details: String = "",
     var directions: String = "",
-    var picture: String = "",
-    //var ingredientsList : List<IngredientEntity> = arrayListOf()
+    var picture: String = ""
+    //var ingredientsList : List<String> = arrayListOf()
+
     //var pictures: List<Int> = arrayListOf(),
     //var videos: List<Int> = arrayListOf()
 ) : Parcelable

@@ -1,4 +1,4 @@
-package com.example.pickrecipe.fragments
+package com.example.pickrecipe.fragment
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,20 +9,16 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
-import com.example.pickrecipe.model.Recipe
+import com.example.pickrecipe.db.model.RecipeEntity
+import com.example.pickrecipe.json.RecipeJson
 import com.example.pickrecipe.model.User
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe_list.view.*
 
-class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
+class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
 
-    var recipeList = emptyList<Recipe>();
+    var recipeList = emptyList<RecipeEntity>();
     lateinit var currentUser : User;
-    var context : Context;
-
-    constructor(newList : List<Recipe>, newContext : Context){
-        this.context = newContext;
-        this.recipeList = newList;
-    }
 
     inner class RecipeViewHolder(@NonNull itemView : View) : RecyclerView.ViewHolder(itemView){
         lateinit var textTitle   : TextView;
@@ -51,21 +47,31 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.textTitle.text = this.recipeList[position].getRecipeTitle();
-        holder.textDetails.text = this.recipeList[position].getDetails();
-        holder.textRating.text = this.recipeList[position].getRate().toString();
+        holder.textTitle.text = this.recipeList[position].recipeTitle;
+        holder.textDetails.text = this.recipeList[position].details;
+        holder.textRating.text = this.recipeList[position].rating.toString();
+
+
+        if(recipeList[position].picture == ""){
+            Picasso.get().load(R.drawable.food).into(holder.imageRecipe);
+        } else {
+            Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
+        }
+
+        /*
         holder.imageStar.setOnClickListener {
             holder.imageStar.alpha = 0.75f;
             this.currentUser.getBookMarksRecipe().add(this.recipeList[position]);
         }
+         */
     }
 
     override fun getItemCount(): Int {
         return this.recipeList.size;
     }
 
-    fun setData(newUser : User, newList : List<Recipe>){
-        this.currentUser = newUser;
+    fun setData(/*newUser : User,*/ newList : List<RecipeEntity>){
+        //this.currentUser = newUser;
         this.recipeList = newList;
         notifyDataSetChanged();
     }
