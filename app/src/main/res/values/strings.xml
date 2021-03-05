@@ -22,4 +22,14 @@
     <string name="pickYourRecipe">Pick Your Recipe</string>
     <string name="loggedAs"><![CDATA[Logged as: <username>]]></string>
     <string name="pickYourRecipeSplash">Pick Your Recipe!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="notRegistered"><u>Not Registered? Click here to sign up!</u></string>
+    <string name="signIn">Sign In</string>
+    <string name="register">Register</string>
+    <string name="signUp">Sign Up!</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="alreadyRegistered"><u>Already Registered? Click here to Sign In!</u></string>
+    <string name="logout">Log Out</string>
 </resources>
