@@ -22,4 +22,9 @@
         android:name="com.example.pickrecipe.ui.pantry.PantryFragment"
         android:label="@string/pantry"
         tools:layout="@layout/fragment_pantry" />
+    <activity
+        android:id="@+id/nav_grocery_stores"
+        android:name="com.example.pickrecipe.StoresActivity"
+        android:label="activity_stores"
+        tools:layout="@layout/activity_stores" />
 </navigation>

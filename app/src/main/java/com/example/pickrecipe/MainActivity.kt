@@ -31,11 +31,13 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.nav_home, R.id.nav_favorites, R.id.nav_pantry
+                        R.id.nav_home, R.id.nav_favorites, R.id.nav_pantry, R.id.nav_grocery_stores
                 ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

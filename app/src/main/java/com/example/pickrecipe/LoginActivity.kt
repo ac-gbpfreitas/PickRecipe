@@ -20,11 +20,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-        //Botão para gustavo usar para teste -- Por favor, não deletar
+        //Botão para gustavo usar para teste -- Por favor, não deletar -- OK NAO IREI INVADIR SUA PRIVACIDADE CARA RELAXA
         btnGustavoTest.setOnClickListener {
             startActivity(Intent(this@LoginActivity,GustavoTest::class.java))
         }
-
 
         buttonSignIn.setOnClickListener {
 
