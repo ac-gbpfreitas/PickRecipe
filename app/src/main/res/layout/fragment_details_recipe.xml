@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.list.ListFragmentRecipe">
-
+    android:layout_margin="8dp"
+    tools:context=".fragment.DetailsFragmentRecipe">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewList"
+        android:id="@+id/recyclerViewDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="0dp"

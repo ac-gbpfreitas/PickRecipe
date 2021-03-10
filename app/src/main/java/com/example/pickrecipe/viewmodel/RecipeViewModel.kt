@@ -18,6 +18,8 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
     val readAllRecipes : LiveData<List<RecipeEntity>>;
     val readAllIngredients : LiveData<List<IngredientEntity>>;
 
+    var ingredientsFromRecipe : List<IngredientEntity> = arrayListOf();
+
     private val repositoryRecipes : RecipeRepository;
     private val repositoryIngredients : IngredientRepository;
 
@@ -26,7 +28,6 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
         val recipeDao = RecipeIngredientDatabase.getDatabase(application)?.recipeDao();
         val ingredientDao = RecipeIngredientDatabase.getDatabase(application)?.ingredientDao();
 
-        //val recipeDao = RecipeDatabase.getDatabase(application)?.recipeDao();
         repositoryRecipes = RecipeRepository(recipeDao!!);
         repositoryIngredients = IngredientRepository(ingredientDao!!)
 
@@ -40,7 +41,7 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun deleteRecipe(id : Int){
+    fun deleteRecipe(id : String){
         viewModelScope.launch(Dispatchers.IO) {
             repositoryRecipes.deleteRecipe(id);
         }
@@ -58,13 +59,17 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    /*
-    fun getAllRecipes() : LiveData<List<RecipeEntity>>{
+    fun getIngredientsByRecipeId(id : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryRecipes.getAllRecipes();
+            ingredientsFromRecipe = repositoryIngredients.getIngredientsByRecipe(id);
         }
     }
-    */
+
+    fun getRecipeById(id: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryRecipes.getRecipe(id)
+        }
+    }
 
     fun addAllRecipes(){
         viewModelScope.launch(Dispatchers.IO) {
@@ -75,7 +80,6 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
                 repositoryRecipes.addAllRecipes(recipeFromJson);
                 var ingredientFromJson = RecipeJsonReader(getApplication(),"recipes.json").ingredientEntities
                 repositoryIngredients.addAllIngredients(ingredientFromJson);
-                //Log.d("DATABASE_INGREDIENT",repositoryIngredients.getIngredient(3).detail);
             }
         }
     }

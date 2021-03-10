@@ -18,11 +18,15 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         return recipeDao.getAllRecipes();
     }
 
+    suspend fun getRecipe(id : String) : RecipeEntity{
+        return recipeDao.getRecipe(id);
+    }
+
     suspend fun updateRecipe(recipe : RecipeEntity){
         recipeDao.updateRecipeEntity(recipe);
     }
 
-    fun deleteRecipe(id : Int){
+    fun deleteRecipe(id : String){
         recipeDao.deleteRecipe(id);
     }
 

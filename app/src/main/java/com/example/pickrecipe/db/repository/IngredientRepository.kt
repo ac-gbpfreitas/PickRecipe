@@ -31,6 +31,10 @@ class IngredientRepository(private val ingredientDao: IngredientDao) {
         ingredientDao.deleteAllIngredients();
     }
 
+    fun getIngredientsByRecipe(id : String) : List<IngredientEntity>{
+        return ingredientDao.getIngredientByRecipe(id);
+    }
+
     suspend fun addAllIngredients(ingredientList : List<IngredientEntity>){
         ingredientDao.insertAll(ingredientList);
 //        Log.d("DATABASE_INGREDIENT",ingredientList[3].detail);

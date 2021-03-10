@@ -1,11 +1,15 @@
 package com.example.pickrecipe.adapters
 
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.db.model.RecipeEntity
@@ -45,23 +49,37 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
+        var currentItem = this.recipeList[position];
         holder.textTitle.text = this.recipeList[position].recipeTitle;
         holder.textDetails.text = this.recipeList[position].details;
-        holder.textRating.text = this.recipeList[position].rating.toString();
+        holder.textRating.text = "Rating: "+this.recipeList[position].rating.toString();
 
+        val bundle = bundleOf(
+            "id" to this.recipeList[position].recipeId,
+            "title" to this.recipeList[position].recipeTitle,
+            "rating" to this.recipeList[position].rating.toString(),
+            "details" to this.recipeList[position].details,
+            "directions" to this.recipeList[position].directions,
+            "picture" to this.recipeList[position].picture
+        );
+
+        holder.itemView.recipeList.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.DetailsFragmentRecipe,bundle);
+        }
 
         if(recipeList[position].picture == ""){
-            Picasso.get().load(R.drawable.food).into(holder.imageRecipe);
+            holder.imageRecipe.setImageResource(R.drawable.food);
         } else {
             Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
         }
 
-        /*
         holder.imageStar.setOnClickListener {
-            holder.imageStar.alpha = 0.75f;
-            this.currentUser.getBookMarksRecipe().add(this.recipeList[position]);
+            if(holder.imageStar.alpha != 0.75f){
+                holder.imageStar.alpha = 0.75f;
+            } else {
+                holder.imageStar.alpha = 0.25f;
+            }
         }
-         */
     }
 
     override fun getItemCount(): Int {

@@ -17,13 +17,13 @@ interface RecipeDao {
     fun getAllRecipes() : LiveData<List<RecipeEntity>>
 
     @Query("SELECT * FROM recipe WHERE recipeId = :id")
-    suspend fun getRecipe(id : Int) : RecipeEntity
+    suspend fun getRecipe(id : String) : RecipeEntity
 
     @Query("DELETE FROM recipe")
     suspend fun deleteAllRecipes()
 
     @Query("DELETE FROM recipe WHERE recipeId = :id")
-    fun deleteRecipe(id : Int);
+    fun deleteRecipe(id : String);
 
     @Update
     suspend fun updateRecipeEntity(RecipeEntity : RecipeEntity)

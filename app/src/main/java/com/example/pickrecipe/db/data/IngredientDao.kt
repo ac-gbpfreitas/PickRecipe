@@ -20,6 +20,9 @@ interface IngredientDao {
     @Query("SELECT * FROM ingredient WHERE ingredientId = :id")
     suspend fun getIngredient(id : Int) : IngredientEntity
 
+    @Query("SELECT * FROM ingredient WHERE recipeId = :id")
+    fun getIngredientByRecipe(id : String) : List<IngredientEntity>;
+
     @Query("DELETE FROM ingredient")
     suspend fun deleteAllIngredients()
 

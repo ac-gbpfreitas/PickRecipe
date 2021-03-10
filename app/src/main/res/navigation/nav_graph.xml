@@ -9,5 +9,19 @@
         android:id="@+id/ListFragment"
         android:name="com.example.pickrecipe.fragment.list.ListFragmentRecipe"
         android:label="@string/fragmentList"
-        tools:layout="@layout/fragment_list_recipe"/>
+        tools:layout="@layout/fragment_list_recipe">
+        <action
+            android:id="@+id/action_ListFragment_to_DetailsFragmentRecipe"
+            app:destination="@id/DetailsFragmentRecipe" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailsFragmentRecipe"
+        android:name="com.example.pickrecipe.fragment.DetailsFragmentRecipe"
+        android:label="Recipe Details"
+        tools:layout="@layout/fragment_details_recipe" >
+        <action
+            android:id="@+id/action_DetailsFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
+    </fragment>
 </navigation>

@@ -2,10 +2,10 @@ package com.example.pickrecipe.model
 
 class Recipe {
 
-    private var recipeId : Int = 0;
+    private var recipeId : String = "0";
     private var rating: Double = 0.0;
     private var picture : String = "";
-    private var ingredientsList : List<Ingredient> = arrayListOf();
+    private var ingredientsList : ArrayList<Ingredient> = arrayListOf();
 
     private lateinit var details: String;
     private lateinit var recipeTitle : String;
@@ -15,13 +15,13 @@ class Recipe {
     //private var videos: ArrayList<Int> = arrayListOf();
 
     constructor(
-        id : Int,
+        id : String = "",
         title : String,
         details : String = "",
         directions : String = "",
         rating : Double = 0.0,
         pic : String = "",
-        ingredients : List<Ingredient>
+        ingredients : ArrayList<Ingredient>
     ){
         this.recipeId = id;
         this.recipeTitle = title;
@@ -32,10 +32,10 @@ class Recipe {
         this.ingredientsList = ingredients
 
     }
-    public fun getRecipeId() : Int{
+    public fun getRecipeId() : String{
         return this.recipeId;
     }
-    public fun setRecipeId(newId : Int){
+    public fun setRecipeId(newId : String){
         this.recipeId = newId;
     }
 
@@ -57,7 +57,7 @@ class Recipe {
         return this.ingredientsList;
     }
 
-    public fun setIngredients(ingredients: List<Ingredient>){
+    public fun setIngredients(ingredients: ArrayList<Ingredient>){
         this.ingredientsList = ingredients;
     }
 

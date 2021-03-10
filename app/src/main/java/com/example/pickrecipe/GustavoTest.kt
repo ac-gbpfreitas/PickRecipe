@@ -4,10 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.pickrecipe.fragment.RecipeAdapter
-import com.example.pickrecipe.json.JsonTester
 
 class GustavoTest : AppCompatActivity() {
 

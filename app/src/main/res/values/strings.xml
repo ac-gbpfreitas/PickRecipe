@@ -38,4 +38,5 @@
     <string name="alreadyRegistered"><u>Already Registered? Click here to Sign In!</u></string>
     <string name="logout">Log Out</string>
     <string name="testButtonGustavo">Botao Gustavo usa para Teste</string>
+    <string name="btnBackDetail">Back To the List</string>
 </resources>
