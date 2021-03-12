@@ -40,4 +40,6 @@
     <string name="testButtonGustavo">Botao Gustavo usa para Teste</string>
     <string name="btnBackDetail">Back To the List</string>
     <string name="title_activity_stores">Map</string>
+    <string name="getLocation">Get Location</string>
+    <string name="goToMyLocation">Go To My Location</string>
 </resources>
