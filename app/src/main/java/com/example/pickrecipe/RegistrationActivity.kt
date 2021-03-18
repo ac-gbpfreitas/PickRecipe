@@ -17,6 +17,7 @@ import java.util.*
 class RegistrationActivity : AppCompatActivity() {
 
     var mSocket: Socket? = null
+    var usernameExists : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,39 +31,12 @@ class RegistrationActivity : AppCompatActivity() {
 
         mSocket?.on("notification",onNotification)
 
+        mSocket?.on("usernameSearchResult",onUsernameSearchResult)
+
         buttonRegister.setOnClickListener {
             val username = editTextRegistrationUsername.text.toString().trim()
-            val password = editTextRegistrationPassword.text.toString()
-            val confirmPassword = editTextRegistrationConfirmPassword.text.toString()
+            fetchUsername(username)
 
-            val usernameNotValid = username.contains(" ") || username.length < 3
-            val passwordNotValid = password.length < 3
-            val passwordsMatch = password.equals(confirmPassword) && password.isNotEmpty() && !passwordNotValid
-            //val usernameAlreadyExists
-
-            if (usernameNotValid) {
-                Toast.makeText(this, "Username must be 3 chars min, no spaces.", Toast.LENGTH_LONG).show()
-            } else if (passwordNotValid) {
-                Toast.makeText(this, "Password must be 3 chars min.", Toast.LENGTH_LONG).show()
-            } else if (passwordsMatch){
-                //Add username data to mongo
-                addUser(username,password)
-
-                Toast.makeText(this, "Username $username successfully created.", Toast.LENGTH_SHORT).show()
-                val timerTask: TimerTask = object : TimerTask() {
-                    override fun run() {
-                        finish()
-                        val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
-                        intent.putExtra("username",username)
-                        intent.putExtra("password",password)
-                        startActivity(intent)
-                    }
-                }
-                val timer = Timer()
-                timer.schedule(timerTask, 2500)
-            } else {
-                Toast.makeText(this, "Password not confirmed. Try Again.", Toast.LENGTH_LONG).show()
-            }
         }
 
         textViewGoToLogin.setOnClickListener{
@@ -105,6 +79,56 @@ class RegistrationActivity : AppCompatActivity() {
         Log.d("Notification",message)
     }
 
+    var onUsernameSearchResult = Emitter.Listener {
+        val result = it[0] as Boolean
+        usernameExists = result
+        runOnUiThread {
+            checkConstraintsAndAddUser()
+        }
+        Log.d("Fetch Username","Result from fetch username is: $result and usernameExists is $usernameExists")
+    }
+
+    fun fetchUsername(username : String) {
+        val jsonString = "{'username':${username}}"
+        mSocket?.emit("fetchUsername", JSONObject(jsonString))
+    }
+
+    fun checkConstraintsAndAddUser() {
+        val username = editTextRegistrationUsername.text.toString().trim()
+        val password = editTextRegistrationPassword.text.toString()
+        val confirmPassword = editTextRegistrationConfirmPassword.text.toString()
+
+        val usernameNotValid = username.contains(" ") || username.length < 3
+        val passwordNotValid = password.length < 3
+        val passwordsMatch = password.equals(confirmPassword) && password.isNotEmpty() && !passwordNotValid
+
+        if (usernameNotValid) {
+            Toast.makeText(this, "Username must be 3 chars min, no spaces.", Toast.LENGTH_LONG).show()
+        } else if (usernameExists) {
+            Toast.makeText(this, "Username already exists, pick another.", Toast.LENGTH_LONG).show()
+        } else if (passwordNotValid) {
+            Toast.makeText(this, "Password must be 3 chars min.", Toast.LENGTH_LONG).show()
+        } else if (passwordsMatch){
+            //Add username data to mongo
+            addUser(username,password)
+
+            Toast.makeText(this, "Username $username successfully created.", Toast.LENGTH_SHORT).show()
+            val timerTask: TimerTask = object : TimerTask() {
+                override fun run() {
+                    finish()
+                    val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
+                    intent.putExtra("username",username)
+                    intent.putExtra("password",password)
+                    startActivity(intent)
+                }
+            }
+            val timer = Timer()
+            timer.schedule(timerTask, 2500)
+        } else {
+            Toast.makeText(this, "Password not confirmed. Try Again.", Toast.LENGTH_LONG).show()
+        }
+    }
+
     fun addUser(username : String, password : String) {
         val jsonString = "{'username':${username}, 'password' : ${password}}"
         mSocket?.emit("register", JSONObject(jsonString))
@@ -114,6 +138,8 @@ class RegistrationActivity : AppCompatActivity() {
         super.onDestroy()
         mSocket?.disconnect()
     }
+
+
 
 
 }
