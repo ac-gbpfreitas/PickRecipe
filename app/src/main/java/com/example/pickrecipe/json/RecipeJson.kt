@@ -19,3 +19,8 @@ data class IngredientJ(
     @Json(name = "glutenFree")   var glutenFree   : Boolean = false,
     @Json(name = "quantity")     var quantity     : Double
 )
+
+data class UserForLogin(
+    var username : String,
+    var password : String
+)

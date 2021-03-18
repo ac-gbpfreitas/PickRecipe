@@ -98,9 +98,9 @@ class RegistrationActivity : AppCompatActivity() {
         val password = editTextRegistrationPassword.text.toString()
         val confirmPassword = editTextRegistrationConfirmPassword.text.toString()
 
-        val usernameNotValid = username.contains(" ") || username.length < 3
+        val usernameNotValid = username.contains(" ") || username.length < 3 || username == "null"
         val passwordNotValid = password.length < 3
-        val passwordsMatch = password.equals(confirmPassword) && password.isNotEmpty() && !passwordNotValid
+        val passwordsMatch = password == confirmPassword && password.isNotEmpty() && !passwordNotValid
 
         if (usernameNotValid) {
             Toast.makeText(this, "Username must be 3 chars min, no spaces.", Toast.LENGTH_LONG).show()
