@@ -22,5 +22,11 @@ data class IngredientJ(
 
 data class UserForLogin(
     var username : String,
-    var password : String
+    var password : String,
+    var _id : Id
+)
+
+//this is how object ID's come from the backend. We can use it for any entity.
+data class Id(
+        @Json(name = "\$oid") var id : String
 )

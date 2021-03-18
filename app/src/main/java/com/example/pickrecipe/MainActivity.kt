@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,6 +14,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,7 +41,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
+        val bundle = intent.extras
+        if (bundle != null) {
+            val headerView = navView.getHeaderView(0)
+            val textViewLoggedInAs : TextView = headerView.findViewById(R.id.textViewLoggedInAs)
+            textViewLoggedInAs.text = "Logged as: ${bundle.getString("username","<username>")}"
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
