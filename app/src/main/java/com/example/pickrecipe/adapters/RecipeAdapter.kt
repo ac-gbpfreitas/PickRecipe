@@ -60,7 +60,8 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
             "rating" to this.recipeList[position].rating.toString(),
             "details" to this.recipeList[position].details,
             "directions" to this.recipeList[position].directions,
-            "picture" to this.recipeList[position].picture
+            "picture" to this.recipeList[position].picture,
+            "ingredients" to this.recipeList[position].ingredients
         );
 
         holder.itemView.recipeList.setOnClickListener {

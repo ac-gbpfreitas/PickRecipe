@@ -9,7 +9,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class RecipeJsonReader (context : Context, fileName : String) {
+class RecipeJsonReaderTester (context : Context, fileName : String) {
 
 
     //Refer to Json class file and create a list
@@ -18,7 +18,6 @@ class RecipeJsonReader (context : Context, fileName : String) {
 
     //List of Recipe and Ingredient Entities - Database related
     var recipeEntities : ArrayList<RecipeEntity> = arrayListOf();
-    var ingredientEntities : ArrayList<IngredientEntity> = arrayListOf();
 
     companion object{
         var recipeInventory : ArrayList<RecipeJson> = arrayListOf();
@@ -35,25 +34,17 @@ class RecipeJsonReader (context : Context, fileName : String) {
         //Check if the json is empty
         if(!recipeListJson.isNullOrEmpty()){
 
+
+
             //Loop to get every record from json
             for((i, newRecipe) in recipeListJson.withIndex()){
-                var recipeIngredient : String = "";
+                var ingredients : String = "";
                 //A loop to get every ingredient from the json ingredientList, from each recipe
                 for((j,newIngredient) in newRecipe.ingredients.withIndex()){
-                    var ingredient = IngredientEntity(
-                        newIngredient.ingredientId,
-                        newRecipe.id,
-                        newIngredient.detail,
-                        newIngredient.unity,
-                        newIngredient.quantity,
-                        newIngredient.glutenFree
-                    );
-                    recipeIngredient += newIngredient.quantity.toString()+"|";
-                    recipeIngredient += newIngredient.unity+"|";
-                    recipeIngredient += newIngredient.detail+"|";
-                    //recipeIngredient += newIngredient.ingredientId
-                    //Add the ingredient to a list of ingredients
-                    ingredientEntities.add(ingredient)
+                    ingredients = newIngredient.quantity.toString()+"|";
+                    ingredients += newIngredient.unity+"|";
+                    ingredients += newIngredient.detail+"|";
+                    ingredients += "#id:"+newIngredient.ingredientId+"|\n";
                 }
 
                 //Create a recipeEntity Object
@@ -64,7 +55,7 @@ class RecipeJsonReader (context : Context, fileName : String) {
                     newRecipe.details,
                     newRecipe.directions,
                     newRecipe.picture,
-                    recipeIngredient
+                    ingredients
                 );
 
                 //Add the recipe object to the list

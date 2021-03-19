@@ -2,6 +2,7 @@ package com.example.pickrecipe.db.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.pickrecipe.db.data.IngredientDao
 import com.example.pickrecipe.db.data.RecipeDao
 import com.example.pickrecipe.db.model.IngredientEntity
@@ -37,6 +38,5 @@ class IngredientRepository(private val ingredientDao: IngredientDao) {
 
     suspend fun addAllIngredients(ingredientList : List<IngredientEntity>){
         ingredientDao.insertAll(ingredientList);
-//        Log.d("DATABASE_INGREDIENT",ingredientList[3].detail);
     }
 }

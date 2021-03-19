@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
 
-class DetailRecipeAdapter(
-
-    ) : RecyclerView.Adapter<DetailRecipeAdapter.DetailRecipeViewHolder>() {
-
+class DetailRecipeAdapterTester(
+    /*private var recipe : Recipe*/
+    ) : RecyclerView.Adapter<DetailRecipeAdapterTester.DetailRecipeViewHolder>() {
 
     lateinit var currentRecipe : Recipe;
 
@@ -64,27 +63,16 @@ class DetailRecipeAdapter(
     }
 
     override fun onBindViewHolder(holder: DetailRecipeViewHolder, position: Int) {
-        //var currentItem = this.currentRecipe;
-        holder.textTitle.text = this.currentRecipe.getRecipeTitle();
-        holder.textRating.text = "Rating: "+this.currentRecipe.getRate();
-        holder.textDirections.text = this.currentRecipe.getDirections();
+        var currentItem = this.currentRecipe;
 
-        //Parse Ingredients String
-        var ingredientList = this.currentRecipe.getIngredients().split("|");
 
-        var textIngredient : String = "";
-        //for((j,ingredientLine) in ingredientList.withIndex()){
-        for((j,ingredientLine) in ingredientList.withIndex()){
-            /*
-            //I've add the ingredient id in the string, just in case
-            //That is why the condition below avoid inserting the ingredient id
-            */
-            if(!ingredientList[j].contains("#id")){
-                textIngredient += ingredientLine+" ";
-            }
-        }
-        holder.textIngredients.text = textIngredient;
 
+        var textIngredients : String = "";
+
+        this.currentRecipe.getIngredients();
+
+        holder.textIngredients.text = textIngredients;
+        Log.d("INGREDIENTS",textIngredients);
     }
 
     override fun getItemCount(): Int {

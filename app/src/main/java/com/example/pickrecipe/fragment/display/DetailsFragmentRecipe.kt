@@ -1,4 +1,4 @@
-package com.example.pickrecipe.fragment
+package com.example.pickrecipe.fragment.display
 
 import android.os.Bundle
 import android.util.Log
@@ -18,13 +18,16 @@ import kotlinx.android.synthetic.main.fragment_details_recipe.view.*
 
 
 class DetailsFragmentRecipe : Fragment() {
-    private lateinit var mRecipeViewModel : RecipeViewModel;
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_details_recipe, container, false);
 
+        var mRecipeViewModel : RecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
+        mRecipeViewModel.addAllRecipes();
         
         var id = arguments?.getString("id");
         var title = arguments?.getString("title");
@@ -32,49 +35,16 @@ class DetailsFragmentRecipe : Fragment() {
         var details = arguments?.getString("details");
         var picture = arguments?.getString("picture");
         var directions = arguments?.getString("directions");
+        var ingredients = arguments?.getString("ingredients");
 
-        Log.d("RECIPE",id.toString());
-//        Log.d("recipe",title.toString());
-//        Log.d("recipe",rating.toString());
-//        Log.d("recipe",details.toString());
-//        Log.d("recipe",picture.toString());
-//        Log.d("recipe",directions.toString());
 
-        var recipeDetail = RecipeEntity(
-                id!!,title!!, rating!!.toDouble(),details!!,directions!!,picture!!
+        var recipeDetail = Recipe(
+                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!
         );
 
 
-        var mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-        mRecipeViewModel.getIngredientsByRecipeId(id);
-
-        var ingredients : ArrayList<Ingredient> = arrayListOf();
-        for(newIngredient in mRecipeViewModel.ingredientsFromRecipe){
-            ingredients.add(
-                Ingredient(
-                    newIngredient.ingredientId,
-                    newIngredient.recipeId,
-                    newIngredient.detail,
-                    newIngredient.unity,
-                    newIngredient.quantity,
-                    newIngredient.glutenFree
-                )
-            );
-        }
-
-        var recipeDetail2 = Recipe(
-                recipeDetail.recipeId,
-                recipeDetail.recipeTitle,
-                recipeDetail.details,
-                recipeDetail.directions,
-                recipeDetail.rating,
-                recipeDetail.picture,
-                ingredients
-                );
-
         var recipeDetailAdapter = DetailRecipeAdapter();
-
-        recipeDetailAdapter.setData(recipeDetail2);
+        recipeDetailAdapter.setData(recipeDetail);
 
         val recyclerView = view.recyclerViewDetail;
         recyclerView.adapter = recipeDetailAdapter;

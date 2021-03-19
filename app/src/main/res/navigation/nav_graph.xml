@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/DetailsFragmentRecipe"
-        android:name="com.example.pickrecipe.fragment.DetailsFragmentRecipe"
+        android:name="com.example.pickrecipe.fragment.display.DetailsFragmentRecipe"
         android:label="Recipe Details"
         tools:layout="@layout/fragment_details_recipe" >
         <action

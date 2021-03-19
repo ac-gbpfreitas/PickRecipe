@@ -11,11 +11,11 @@ data class  RecipeEntity (
     @PrimaryKey
     var recipeId : String,
     var recipeTitle : String = "",
-    var rating: Double = 0.0,
-    var details: String = "",
-    var directions: String = "",
-    var picture: String = ""
-    //var ingredientsList : List<String> = arrayListOf()
+    var rating : Double = 0.0,
+    var details : String = "",
+    var directions : String = "",
+    var picture : String = "",
+    var ingredients : String = ""
 
     //var pictures: List<Int> = arrayListOf(),
     //var videos: List<Int> = arrayListOf()
