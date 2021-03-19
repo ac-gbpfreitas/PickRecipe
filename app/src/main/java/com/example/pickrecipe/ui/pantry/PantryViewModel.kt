@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class PantryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is pantry Fragment"
+        value = "Select an ingredient and click on the \"+\" button to add it to your pantry. "
     }
     val text: LiveData<String> = _text
 }

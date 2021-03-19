@@ -130,7 +130,7 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     fun addUser(username : String, password : String) {
-        val jsonString = "{'username':${username}, 'password' : ${password}}"
+        val jsonString = "{'username':${username}, 'password' : '${password}'}"
         mSocket?.emit("register", JSONObject(jsonString))
     }
 

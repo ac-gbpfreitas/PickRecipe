@@ -42,4 +42,13 @@
     <string name="title_activity_stores">Map</string>
     <string name="getLocation">Get Location</string>
     <string name="goToMyLocation">Go To My Location</string>
+
+    <string-array name="ingredients">
+        <item>black pepper</item>
+        <item>chicken breast</item>
+        <item>garlic</item>
+        <item>onion</item>
+        <item>salt</item>
+    </string-array>
+
 </resources>

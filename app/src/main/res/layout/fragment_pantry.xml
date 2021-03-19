@@ -17,15 +17,26 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <Spinner
+        android:id="@+id/spinnerIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:entries="@array/ingredients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_slideshow" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddIngredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="520dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="176dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
