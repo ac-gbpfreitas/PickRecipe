@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.pickrecipe.fragment.list.ListFragmentRecipe
-import com.example.pickrecipe.json.UserForLogin
+import com.example.pickrecipe.json.UserJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
     var mSocket: Socket? = null
     var usernameExists : Boolean = false
-    private val myType = Types.newParameterizedType(UserForLogin::class.java)
+    private val myType = Types.newParameterizedType(UserJson::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
         val moshi: Moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
-        val adapter : JsonAdapter<UserForLogin> = moshi.adapter(myType)
+        val adapter : JsonAdapter<UserJson> = moshi.adapter(myType)
 
         val user = adapter.fromJson(data)
         val password = editTextLoginPassword.text.toString()
@@ -147,4 +147,5 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
 }

@@ -20,10 +20,12 @@ data class IngredientJ(
     @Json(name = "quantity")     var quantity     : Double
 )
 
-data class UserForLogin(
+data class UserJson(
     var username : String,
     var password : String,
-    var _id : Id
+    var _id : Id,
+    var pantry : List<String>,
+    var favorites : List<String>
 )
 
 //this is how object ID's come from the backend. We can use it for any entity.
