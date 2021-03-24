@@ -1,0 +1,293 @@
+[
+  {
+    "_id": {
+      "$oid": "605a8ddfc290831b8eb2a94d"
+    },
+    "id": "1",
+    "title": "Cheese Omelette",
+    "details": "Prep: 5 mins|Cook: 10 mins|Servings: 1",
+    "ingredients": [
+      {
+        "qty": "3",
+        "name": "egg"
+      },
+      {
+        "qty": "1 tbsp",
+        "name": "milk"
+      },
+      {
+        "qty": "",
+        "name": "salt"
+      },
+      {
+        "qty": "",
+        "name": "white pepper"
+      },
+      {
+        "qty": "2 tbsp",
+        "name": "butter"
+      },
+      {
+        "qty": "1/4 cup",
+        "name": "cheese"
+      }
+    ],
+    "directions": "Beat eggs in a bowl with a whisk. Add milk and season with salt and white pepper. Whisk for a few minutes until egg mixture is foamy; beating in air makes the omelette fluffy. Melt butter in a small, nonstick skillet over medium-low heat. Pour in egg mixture and twirl skillet so bottom is evenly covered with egg. Cook for 1 minute until egg starts to set. Lift edges with a spatula and tilt the skillet so uncooked egg mixture can run towards the bottom of the skillet to set. Repeat until no visible liquid egg remains. Carefully flip omelette and cook for another 30 seconds to 1 minute. Sprinkle Emmentaler cheese in one line in the middle of the omelette and fold omelette in half. Cook for 20 seconds, then slide omelette onto plate.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://image.shutterstock.com/image-photo/stuffed-omelette-tomatoes-red-bell-600w-1330438280.jpg",
+    "tags": ""
+  },
+  {
+    "_id": {
+      "$oid": "605a91c9c290831b8eb2a94e"
+    },
+    "id": "2",
+    "title": "Alfredo Sauce",
+    "details": "Prep: 10 mins|Cook: 10 mins|Servings: 4",
+    "ingredients": [
+      {
+        "qty": "¼ cup",
+        "name": " butter"
+      },
+      {
+        "qty": "1 cup",
+        "name": "heavy cream"
+      },
+      {
+        "qty": "1 clove, crushed",
+        "name": "garlic"
+      },
+      {
+        "qty": "1 ½ cups",
+        "name": "parmesan"
+      },
+      {
+        "qty": "¼ cup freshly chopped",
+        "name": "parsley"
+      }
+    ],
+    "directions": "Melt butter in a medium saucepan over medium low heat. Add cream and simmer for 5 minutes, then add garlic and cheese and whisk quickly, heating through. Stir in parsley and serve.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://image.shutterstock.com/image-photo/bowl-alfredo-italian-pasta-sauce-600w-738397711.jpg",
+    "tags": "sauce, alfredo"
+  },
+  {
+    "_id": {
+      "$oid": "605a9409c290831b8eb2a94f"
+    },
+    "id": "3",
+    "title": "Simple Gluten-Free Snickerdoodle Cookies",
+    "details": "Prep: 15 mins|Cook: 12 mins|Servings: 24",
+    "ingredients": [
+      {
+        "qty": "1 ⅓ cups",
+        "name": "gluten-free all-purpose flour"
+      },
+      {
+        "qty": "1 teaspoon",
+        "name": "baking powder"
+      },
+      {
+        "qty": "¼ teaspoon",
+        "name": "salt"
+      },
+      {
+        "qty": "¼ teaspoon",
+        "name": "baking soda"
+      },
+      {
+        "qty": "½ cup",
+        "name": "butter"
+      },
+      {
+        "qty": "1 cup",
+        "name": "sugar"
+      },
+      {
+        "qty": "1",
+        "name": "egg"
+      },
+      {
+        "qty": "1 ½ teaspoons, ground",
+        "name": "cinnamon"
+      }
+    ],
+    "directions": "Preheat the oven to 350 degrees F (180 degrees C). Line 2 baking sheets with parchment paper. Combine flour, baking powder, salt, and baking soda in a bowl. Whisk butter and 3/4 cup sugar with an electric mixer in a separate bowl until soft and creamy, about 2 minutes. Add egg; whisk until well combined. Add flour mixture gradually; whisk on low speed until a soft dough is formed, about 2 minutes. Shape dough into 1 1/2-inch balls. Combine remaining 1/4 cup sugar with cinnamon in a bowl. Roll balls in cinnamon mixture and place on the prepared baking sheets. Bake in the preheated oven until edges are golden, 12 to 15 minutes. Cool on the baking sheet for 1 minute before removing to a wire rack to cool completely.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://media.gettyimages.com/photos/fresh-sliced-whole-grain-loaf-of-bread-picture-id949418138?s=2048x2048",
+    "tags": "gluten-free, dessert"
+  },
+  {
+    "_id": {
+      "$oid": "605a9744012634026892b4ba"
+    },
+    "id": "4",
+    "title": "Chicken Katsu",
+    "details": "Prep: 10 mins|Cook: 10 mins|Servings: 4",
+    "ingredients": [
+      {
+        "qty": "4 skinless, boneless",
+        "name": "chicken breast"
+      },
+      {
+        "qty": "",
+        "name": "pepper"
+      },
+      {
+        "qty": "",
+        "name": "salt"
+      },
+      {
+        "qty": "2 tbsp",
+        "name": "all-purpose flour"
+      },
+      {
+        "qty": "1, beaten",
+        "name": "egg"
+      },
+      {
+        "qty": "1 cup",
+        "name": "panko"
+      },
+      {
+        "qty": "1 cup",
+        "name": "oil"
+      }
+    ],
+    "directions": "Season the chicken breasts on both sides with salt and pepper. Place the flour, egg and panko crumbs into separate shallow dishes. Coat the chicken breasts in flour, shaking off any excess. Dip them into the egg, and then press into the panko crumbs until well coated on both sides. Heat 1/4 inch of oil in a large skillet over medium-high heat. Place chicken in the hot oil, and cook 3 or 4 minutes per side, or until golden brown.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://media.gettyimages.com/photos/hawaiian-chicken-katsu-picture-id898393598?s=2048x2048",
+    "tags": "fried-chicken"
+  },
+  {
+    "_id": {
+      "$oid": "605a98b3012634026892b4bb"
+    },
+    "id": "5",
+    "title": "Strawberry Smoothie",
+    "details": "Prep: 5 mins|Servings: 1",
+    "ingredients": [
+      {
+        "qty": "6-ounce container",
+        "name": "strawberry yogurt"
+      },
+      {
+        "qty": "¾ cup",
+        "name": "milk"
+      },
+      {
+        "qty": "½ cup, frozen",
+        "name": "strawberries"
+      },
+      {
+        "qty": "¼ cup, ground",
+        "name": "oats"
+      },
+      {
+        "qty": "1 teaspoon",
+        "name": "flax seeds"
+      },
+      {
+        "qty": "½ teaspoon",
+        "name": "vanilla extract"
+      }
+    ],
+    "directions": "Blend yogurt, milk, strawberries, oats, flax, and vanilla extract in a blender until smooth, about 30 seconds.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://media.gettyimages.com/photos/wild-strawberry-smoothie-picture-id612670950?s=2048x2048",
+    "tags": "smoothie"
+  },
+  {
+    "_id": {
+      "$oid": "605a9a4f012634026892b4bd"
+    },
+    "id": "6",
+    "title": "Easy Banana Bread",
+    "details": "Prep: 15 mins|Cook: 1 hr|Servings: 10",
+    "ingredients": [
+      {
+        "qty": "3 ripe, mashed",
+        "name": "banana"
+      },
+      {
+        "qty": "1 teaspoon",
+        "name": "salt"
+      },
+      {
+        "qty": "1 cup",
+        "name": "sugar"
+      },
+      {
+        "qty": "1 ½ cups",
+        "name": "all-purpose flour"
+      },
+      {
+        "qty": "1",
+        "name": "egg"
+      },
+      {
+        "qty": "1 teaspoon",
+        "name": "baking soda"
+      },
+      {
+        "qty": "¼ cup, melted",
+        "name": "butter"
+      }
+    ],
+    "directions": "Preheat oven to 325 degrees F (165 degrees C). Grease a 9x5-inch loaf pan. Combine bananas, sugar, egg, and butter together in a bowl. Mix flour and baking soda together in a separate bowl; stir into banana mixture until batter is just mixed. Stir salt into batter. Pour batter into the prepared loaf pan. Bake in the preheated oven until a toothpick inserted in the center of the bread comes out clean, about 1 hour.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://media.gettyimages.com/photos/sliced-banana-bread-walnuts-and-bananas-picture-id182924855?s=2048x2048",
+    "tags": "bread, dessert"
+  },
+  {
+    "_id": {
+      "$oid": "605a9bbd012634026892b4be"
+    },
+    "id": "7",
+    "title": "Peanut Butter Dip",
+    "details": "Prep: 5 mins|Servings: 16",
+    "ingredients": [
+      {
+        "qty": "8-ounce package",
+        "name": "cream cheese"
+      },
+      {
+        "qty": "¼ cup, skim",
+        "name": "milk"
+      },
+      {
+        "qty": "1 cup",
+        "name": "brown sugar"
+      },
+      {
+        "qty": "1 cup",
+        "name": "peanut butter"
+      }
+    ],
+    "directions": "Mix cream cheese, peanut butter, and brown sugar until well blended. Mix in milk until texture is creamy.",
+    "rating": {
+      "$numberDouble": "0.0"
+    },
+    "comments": [],
+    "pic": "https://media.gettyimages.com/photos/salted-caramel-sauce-in-a-jar-picture-id1060426170?s=2048x2048",
+    "tags": "dip, dessert"
+  }
+]
