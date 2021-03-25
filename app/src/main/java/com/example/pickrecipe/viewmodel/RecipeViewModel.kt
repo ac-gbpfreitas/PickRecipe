@@ -80,12 +80,12 @@ class RecipeViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun addAllRecipes(){
+    fun addAllRecipes(data : String){
         viewModelScope.launch(Dispatchers.IO) {
             if( repositoryRecipes.readAllData.value == null ||
                     repositoryRecipes.readAllData.value?.isEmpty() == true
             ){
-                var recipeFromJson = RecipeJsonReaderTester(getApplication(),"recipesFromMongo.json").recipeEntities
+                var recipeFromJson = RecipeJsonReaderTester(getApplication(),data).recipeEntities
                 repositoryRecipes.addAllRecipes(recipeFromJson);
                 /*
                 var ingredientFromJson = RecipeJsonReader(getApplication(),"recipes.json").ingredientEntities

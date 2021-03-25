@@ -27,7 +27,6 @@ class DetailsFragmentRecipe : Fragment() {
         var view = inflater.inflate(R.layout.fragment_details_recipe, container, false);
 
         var mRecipeViewModel : RecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-        mRecipeViewModel.addAllRecipes();
         
         var id = arguments?.getString("id");
         var title = arguments?.getString("title");

@@ -9,7 +9,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class RecipeJsonReaderTester (context : Context, fileName : String) {
+class RecipeJsonReaderTester (context : Context, jsonString : String) {
 
 
     //Refer to Json class file and create a list
@@ -26,11 +26,10 @@ class RecipeJsonReaderTester (context : Context, fileName : String) {
 
     init{
 
-        var jsonContent = FileReaderHelper.getDataFromAssets(context,fileName);
         var moshi : Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         var adapter : JsonAdapter<List<RecipeMoshi>> = moshi.adapter(myRecipeJsonType);
 
-        var recipeListJson = adapter.fromJson(jsonContent);
+        var recipeListJson = adapter.fromJson(jsonString);
 
         //Check if the json is empty
         if(!recipeListJson.isNullOrEmpty()){
@@ -79,7 +78,7 @@ class RecipeJsonReaderTester (context : Context, fileName : String) {
                     recipe.details,
                     ingredients,
                     recipe.directions,
-                    recipe.rating.rating,
+                    recipe.rating,
                     comments,
                     recipe.picture,
                     recipe.tags

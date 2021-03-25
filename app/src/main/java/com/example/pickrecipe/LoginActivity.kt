@@ -26,13 +26,10 @@ class LoginActivity : AppCompatActivity() {
     var usernameExists : Boolean = false
     private val myType = Types.newParameterizedType(UserJson::class.java)
 
-    private var myRecipeJsonType = Types.newParameterizedType(List::class.java, RecipeMoshi::class.java)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var recipeFromJson = RecipeJsonReaderTester(application,"recipesFromMongo.json").recipeEntities
         connectToBackend()
 
         mSocket?.on(Socket.EVENT_CONNECT, Emitter.Listener {

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
+import com.squareup.picasso.Picasso
 
 class DetailRecipeAdapter(
 
@@ -57,7 +58,8 @@ class DetailRecipeAdapter(
         }
 
         detailHolder.btnBack.setOnClickListener {
-            detailHolder.itemView.findNavController().navigate(R.id.ListFragment);
+//            detailHolder.itemView.findNavController().navigate(R.id.ListFragment);
+            detailHolder.itemView.findNavController().navigate(R.id.nav_home);
         }
 
         return detailHolder;
@@ -84,6 +86,12 @@ class DetailRecipeAdapter(
             }
         }
         holder.textIngredients.text = textIngredient;
+
+        if(currentRecipe.getPicture() == ""){
+            holder.imageRecipe.setImageResource(R.drawable.food);
+        } else {
+            Picasso.get().load(currentRecipe.getPicture()).into(holder.imageRecipe);
+        }
 
     }
 

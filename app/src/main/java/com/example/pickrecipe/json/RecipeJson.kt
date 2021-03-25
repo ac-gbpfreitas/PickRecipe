@@ -40,14 +40,10 @@ data class RecipeMoshi (
         @Json(name = "details")     var details     : String,
         @Json(name = "ingredients") var ingredients : List<IngredientMoshi>,
         @Json(name = "directions")  var directions  : String,
-        @Json(name = "rating")      var rating      : Rating,
+        @Json(name = "rating")      var rating      : Double,
         @Json(name = "comments")    var comments    : List<String>,
         @Json(name = "pic")         var picture     : String,
         @Json(name = "tags")        var tags        : String,
-)
-
-data class Rating (
-        @Json(name = "\$numberDouble") var rating : Double
 )
 
 data class IngredientMoshi (

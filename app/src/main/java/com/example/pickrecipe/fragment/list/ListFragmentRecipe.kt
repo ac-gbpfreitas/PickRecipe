@@ -35,7 +35,7 @@ class ListFragmentRecipe : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext());
 
         mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-        mRecipeViewModel.addAllRecipes();
+        mRecipeViewModel.addAllRecipes("");
         mRecipeViewModel.readAllRecipes.observe(viewLifecycleOwner, { 
                 recipe -> recipeAdapter.setData(recipe);
         })
