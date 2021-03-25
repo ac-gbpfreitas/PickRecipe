@@ -9,13 +9,23 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "recipe")
 data class  RecipeEntity (
     @PrimaryKey
+//    var recipeId : String,
+//    var recipeTitle : String = "",
+//    var rating : Double = 0.0,
+//    var details : String = "",
+//    var directions : String = "",
+//    var picture : String = "",
+//    var ingredients : String = ""
+
     var recipeId : String,
     var recipeTitle : String = "",
-    var rating : Double = 0.0,
     var details : String = "",
+    var ingredients : String = "",
     var directions : String = "",
+    var rating : Double = 0.0,
+    var comments : String = "",
     var picture : String = "",
-    var ingredients : String = ""
+    var tags : String = ""
 
     //var pictures: List<Int> = arrayListOf(),
     //var videos: List<Int> = arrayListOf()
