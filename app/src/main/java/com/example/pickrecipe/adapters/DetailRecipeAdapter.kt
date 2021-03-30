@@ -4,18 +4,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.NonNull
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
+import com.example.pickrecipe.ui.pantry.PantryAdapter
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
-class DetailRecipeAdapter(
+class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemListener
 
     ) : RecyclerView.Adapter<DetailRecipeAdapter.DetailRecipeViewHolder>() {
 
@@ -31,6 +30,9 @@ class DetailRecipeAdapter(
         lateinit var imageRecipe : ImageView;
         lateinit var imageStar   : ImageView;
         lateinit var btnBack : Button;
+        lateinit var btnSubmit : Button;
+        lateinit var editTextComment : EditText;
+        lateinit var spinnerRating : Spinner
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailRecipeViewHolder {
@@ -50,6 +52,9 @@ class DetailRecipeAdapter(
         detailHolder.textDirections = itemView.findViewById(R.id.textDirectionsDetails);
         detailHolder.btnBack = itemView.findViewById(R.id.btnBackDetail);
         detailHolder.textComments = itemView.findViewById(R.id.textCommentsDetails);
+        detailHolder.btnSubmit = itemView.findViewById(R.id.btnSubmitComment);
+        detailHolder.editTextComment = itemView.findViewById(R.id.editTextLeaveAComment)
+        detailHolder.spinnerRating = itemView.findViewById(R.id.spinnerRatingScores)
 
 
         detailHolder.imageStar.setOnClickListener {
@@ -63,6 +68,13 @@ class DetailRecipeAdapter(
         detailHolder.btnBack.setOnClickListener {
 //            detailHolder.itemView.findNavController().navigate(R.id.ListFragment);
             detailHolder.itemView.findNavController().navigate(R.id.nav_home);
+        }
+
+        detailHolder.btnSubmit.setOnClickListener {
+            val comment = detailHolder.editTextComment.text.toString()
+            val rating = detailHolder.spinnerRating.selectedItemPosition.toDouble()
+            listener.submitComment(comment,rating)
+
         }
 
         return detailHolder;
@@ -98,6 +110,8 @@ class DetailRecipeAdapter(
 
         if (currentRecipe.getRecipeComments() == "") {
             holder.textComments.text = "No comments yet."
+        } else {
+            holder.textComments.text = parseAndDisplayComments(currentRecipe.getRecipeComments())
         }
 
     }
@@ -109,5 +123,22 @@ class DetailRecipeAdapter(
     fun setData(newRecipe : Recipe){
         this.currentRecipe = newRecipe;
         notifyDataSetChanged();
+    }
+
+    private fun parseAndDisplayComments(comments : String) : String {
+        var parsedComments = "Comments and ratings:\n"
+
+        val commentList = comments.split("|")
+        for (comment in commentList) {
+            if (comment != "") {
+                parsedComments += "$comment\n"
+            }
+        }
+
+        return parsedComments
+    }
+
+    interface ListItemListener {
+        fun submitComment(comment : String, rating: Double)
     }
 }
