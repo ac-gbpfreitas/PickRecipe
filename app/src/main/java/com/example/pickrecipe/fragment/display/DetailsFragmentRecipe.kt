@@ -35,10 +35,11 @@ class DetailsFragmentRecipe : Fragment() {
         var picture = arguments?.getString("picture");
         var directions = arguments?.getString("directions");
         var ingredients = arguments?.getString("ingredients");
+        var comments = arguments?.getString("comments");
 
 
         var recipeDetail = Recipe(
-                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!
+                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!
         );
 
 

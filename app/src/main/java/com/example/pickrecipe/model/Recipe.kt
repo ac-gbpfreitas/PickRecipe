@@ -11,7 +11,7 @@ class Recipe {
     private lateinit var details: String;
     private lateinit var recipeTitle : String;
     private lateinit var directions: String;
-
+    private lateinit var comments: String
     //private var pictures: ArrayList<Int> = arrayListOf();
     //private var videos: ArrayList<Int> = arrayListOf();
 
@@ -22,7 +22,8 @@ class Recipe {
         directions : String = "",
         rating : Double = 0.0,
         pic : String = "",
-        ingredients : String = ""
+        ingredients : String = "",
+        comments : String = ""
     ){
         this.recipeId = id;
         this.recipeTitle = title;
@@ -31,6 +32,7 @@ class Recipe {
         this.rating = rating;
         this.picture = pic;
         this.ingredients = ingredients
+        this.comments = comments
 
     }
     public fun getRecipeId() : String{
@@ -38,6 +40,14 @@ class Recipe {
     }
     public fun setRecipeId(newId : String){
         this.recipeId = newId;
+    }
+
+    public fun getRecipeComments() : String {
+        return this.comments
+    }
+
+    public fun setRecipeComments(comment : String) {
+        this.comments += comment
     }
 
     public fun getRecipeTitle() : String{
@@ -89,6 +99,8 @@ class Recipe {
     public fun getIngredientsLists() : ArrayList<Ingredient>{
         return this.ingredientsList;
     }
+
+
 
     /*
     public fun getPictures(): List<Int>{

@@ -61,7 +61,8 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
             "details" to this.recipeList[position].details,
             "directions" to this.recipeList[position].directions,
             "picture" to this.recipeList[position].picture,
-            "ingredients" to this.recipeList[position].ingredients
+            "ingredients" to this.recipeList[position].ingredients,
+            "comments" to this.recipeList[position].comments
         );
 
         holder.itemView.recipeList.setOnClickListener {
