@@ -70,11 +70,49 @@
             android:text="TextView"
             android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/textCommentsDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextLeaveAComment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:ems="10"
+                android:hint="@string/leaveAComment"
+                android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/spinnerRatingScores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/ratingScores" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmitComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/submit" />
+
         <Button
             android:id="@+id/btnBackDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnBackDetail" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

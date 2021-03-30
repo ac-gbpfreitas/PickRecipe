@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 
 class DetailRecipeAdapter(
 
@@ -26,6 +27,7 @@ class DetailRecipeAdapter(
         lateinit var textRating  : TextView;
         lateinit var textIngredients : TextView;
         lateinit var textDirections : TextView;
+        lateinit var textComments : TextView;
         lateinit var imageRecipe : ImageView;
         lateinit var imageStar   : ImageView;
         lateinit var btnBack : Button;
@@ -47,6 +49,7 @@ class DetailRecipeAdapter(
         detailHolder.textRating = itemView.findViewById(R.id.textRatingDetails);
         detailHolder.textDirections = itemView.findViewById(R.id.textDirectionsDetails);
         detailHolder.btnBack = itemView.findViewById(R.id.btnBackDetail);
+        detailHolder.textComments = itemView.findViewById(R.id.textCommentsDetails);
 
 
         detailHolder.imageStar.setOnClickListener {
@@ -91,6 +94,10 @@ class DetailRecipeAdapter(
             holder.imageRecipe.setImageResource(R.drawable.food);
         } else {
             Picasso.get().load(currentRecipe.getPicture()).into(holder.imageRecipe);
+        }
+
+        if (currentRecipe.getRecipeComments() == "") {
+            holder.textComments.text = "No comments yet."
         }
 
     }

@@ -42,6 +42,8 @@
     <string name="title_activity_stores">Map</string>
     <string name="getLocation">Get Location</string>
     <string name="goToMyLocation">Go To My Location</string>
+    <string name="leaveAComment">Leave a Comment...</string>
+    <string name="submit">Submit</string>
 
     <string-array name="ingredients">
         <item>black pepper</item>
@@ -49,6 +51,16 @@
         <item>garlic</item>
         <item>onion</item>
         <item>salt</item>
+    </string-array>
+
+    <string-array name="ratingScores">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+
     </string-array>
 
 </resources>
