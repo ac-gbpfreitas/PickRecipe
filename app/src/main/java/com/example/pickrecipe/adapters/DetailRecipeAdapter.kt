@@ -27,6 +27,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         lateinit var textIngredients : TextView;
         lateinit var textDirections : TextView;
         lateinit var textComments : TextView;
+        lateinit var textPantryMatch : TextView;
         lateinit var imageRecipe : ImageView;
         lateinit var imageStar   : ImageView;
         lateinit var btnBack : Button;
@@ -55,6 +56,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         detailHolder.btnSubmit = itemView.findViewById(R.id.btnSubmitComment);
         detailHolder.editTextComment = itemView.findViewById(R.id.editTextLeaveAComment)
         detailHolder.spinnerRating = itemView.findViewById(R.id.spinnerRatingScores)
+        detailHolder.textPantryMatch = itemView.findViewById(R.id.textIngredientPantryMatch)
 
 
         detailHolder.imageStar.setOnClickListener {
@@ -88,6 +90,11 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
                 listener.updateRating(newRating)
             }
+        }
+
+        if (currentRecipe.getPantryCheck() == "") detailHolder.textPantryMatch.text = "Loading Pantry results..."
+        else {
+            detailHolder.textPantryMatch.text = currentRecipe.getPantryCheck()
         }
 
         return detailHolder;

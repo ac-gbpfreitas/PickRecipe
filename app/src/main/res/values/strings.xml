@@ -51,6 +51,11 @@
         <item>garlic</item>
         <item>onion</item>
         <item>salt</item>
+        <item>egg</item>
+        <item>milk</item>
+        <item>white pepper</item>
+        <item>butter</item>
+        <item>cheese</item>
     </string-array>
 
     <string-array name="ratingScores">

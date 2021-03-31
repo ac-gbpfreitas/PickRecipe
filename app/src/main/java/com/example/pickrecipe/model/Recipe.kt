@@ -7,6 +7,7 @@ class Recipe {
     private var picture : String = "";
     private var ingredients : String = "";
     private var ingredientsList : ArrayList<Ingredient> = arrayListOf();
+    private lateinit var pantryCheck : String
 
     private lateinit var details: String;
     private lateinit var recipeTitle : String;
@@ -23,7 +24,8 @@ class Recipe {
         rating : Double = 0.0,
         pic : String = "",
         ingredients : String = "",
-        comments : String = ""
+        comments : String = "",
+        pantryCheck : String
     ){
         this.recipeId = id;
         this.recipeTitle = title;
@@ -33,6 +35,7 @@ class Recipe {
         this.picture = pic;
         this.ingredients = ingredients
         this.comments = comments
+        this.pantryCheck = pantryCheck
 
     }
     public fun getRecipeId() : String{
@@ -100,6 +103,9 @@ class Recipe {
         return this.ingredientsList;
     }
 
+    public fun getPantryCheck() : String {
+        return this.pantryCheck
+    }
 
 
     /*
