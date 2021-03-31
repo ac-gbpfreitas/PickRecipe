@@ -127,4 +127,11 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         }
     }
 
+    override fun updateRating(newRating: Double) {
+        val jsonString = "{'rating':'${newRating}', 'id' : '${id}'}"
+        mSocket?.emit("updateRating", JSONObject(jsonString))
+
+        //TODO: UPDATE CACHE DATABASE AND DISPLAY UPDATED RATING
+    }
+
 }

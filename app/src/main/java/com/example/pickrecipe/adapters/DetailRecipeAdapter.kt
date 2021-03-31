@@ -75,6 +75,19 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
             val rating = detailHolder.spinnerRating.selectedItemPosition.toDouble()
             listener.submitComment(comment,rating)
 
+            var newRating = 0.0
+            if (currentRecipe.getRating() == 0.0) {
+                newRating = rating
+                listener.updateRating(newRating)
+            } else {
+                val numberOfComments = currentRecipe.getRecipeComments().split("|").size - 1
+                val sum = currentRecipe.getRating() * numberOfComments
+                newRating = (rating + sum) / (numberOfComments + 1)
+
+                Log.d("RATING","$numberOfComments, $sum, $newRating")
+
+                listener.updateRating(newRating)
+            }
         }
 
         return detailHolder;
@@ -83,7 +96,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     override fun onBindViewHolder(holder: DetailRecipeViewHolder, position: Int) {
         //var currentItem = this.currentRecipe;
         holder.textTitle.text = this.currentRecipe.getRecipeTitle();
-        holder.textRating.text = "Rating: "+this.currentRecipe.getRate();
+        holder.textRating.text = "Rating: "+this.currentRecipe.getRating();
         holder.textDirections.text = this.currentRecipe.getDirections();
 
         //Parse Ingredients String
@@ -140,5 +153,6 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
     interface ListItemListener {
         fun submitComment(comment : String, rating: Double)
+        fun updateRating (newRating : Double)
     }
 }

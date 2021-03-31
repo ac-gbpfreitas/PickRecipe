@@ -57,7 +57,7 @@ class Recipe {
         this.recipeTitle = newTitle;
     }
 
-    public fun getRate(): Double{
+    public fun getRating(): Double{
         return this.rating;
     }
     public fun setRating(newRate: Double){
