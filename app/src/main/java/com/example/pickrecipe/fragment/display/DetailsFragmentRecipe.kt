@@ -34,12 +34,20 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
     var mSocket: Socket? = null
     lateinit var id : String
+    lateinit var title : String
+    lateinit var rating : String
+    lateinit var details : String
+    lateinit var picture : String
+    lateinit var directions : String
+    lateinit var ingredients : String
+    lateinit var comments : String
+    var checkPantryMatchString = ""
     var ingredientList = mutableListOf<String>()
     var pantry = mutableListOf<String>()
     var favorites = mutableListOf<String>()
-    var checkPantryMatchString = ""
     private var myRecipeJsonType = Types.newParameterizedType(RecipeMoshi::class.java)
     private val myUserJsonType = Types.newParameterizedType(UserJson::class.java)
+    private lateinit var recipeDetailAdapter : DetailRecipeAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -164,20 +172,20 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         activity?.runOnUiThread {
 
             id = arguments?.getString("id").toString();
-            var title = arguments?.getString("title");
-            var rating = arguments?.getString("rating");
-            var details = arguments?.getString("details");
-            var picture = arguments?.getString("picture");
-            var directions = arguments?.getString("directions");
-            var ingredients = arguments?.getString("ingredients");
-            var comments = arguments?.getString("comments");
+            title = arguments?.getString("title").toString();
+            rating = arguments?.getString("rating").toString();
+            details = arguments?.getString("details").toString();
+            picture = arguments?.getString("picture").toString();
+            directions = arguments?.getString("directions").toString();
+            ingredients = arguments?.getString("ingredients").toString();
+            comments = arguments?.getString("comments").toString();
 
             var recipeDetail = Recipe(
-                    id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,
+                    id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
                     checkPantryMatchString,checkFavorite()
             );
 
-            val recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe);
+            recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe);
             recipeDetailAdapter.setData(recipeDetail);
 
             val recyclerView = view?.recyclerViewDetail;
@@ -231,15 +239,25 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         return isFavorite
     }
 
-    override fun submitComment(comment: String, rating: Double) {
+    override fun submitComment(comment: String, userRating: Double) {
         if (comment == "") Toast.makeText(context,"Please insert a comment.",Toast.LENGTH_LONG).show()
         else {
             val username = activity?.intent?.extras?.getString("username")
-            val commentEntry = "$comment (by $username, Rating: ${rating.toInt()})"
+            val commentEntry = "$comment (by $username, Rating: ${userRating.toInt()})"
             Log.d("SUBMIT COMMENT",commentEntry)
 
             val jsonString = "{'comment':'${commentEntry}', 'id' : '${id}'}"
             mSocket?.emit("addComment", JSONObject(jsonString))
+
+            val commentEntryCache = "$commentEntry|"
+            comments += commentEntry
+
+            val recipeDetail = Recipe(
+                    id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
+                    checkPantryMatchString,checkFavorite()
+            )
+
+            recipeDetailAdapter.setData(recipeDetail)
 
             //TODO: UPDATE CACHE DATABASE AND COMMENT LIST
         }
@@ -248,6 +266,13 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
     override fun updateRating(newRating: Double) {
         val jsonString = "{'rating':'${newRating}', 'id' : '${id}'}"
         mSocket?.emit("updateRating", JSONObject(jsonString))
+
+        val recipeDetail = Recipe(
+                id,title,details,directions,newRating,picture,ingredients,comments,
+                checkPantryMatchString,checkFavorite()
+        )
+
+        recipeDetailAdapter.setData(recipeDetail)
 
         //TODO: UPDATE CACHE DATABASE AND DISPLAY UPDATED RATING
     }
