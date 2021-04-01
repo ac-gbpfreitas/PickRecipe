@@ -60,10 +60,12 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
 
         detailHolder.imageStar.setOnClickListener {
-            if(detailHolder.imageStar.alpha == 0.25f){
-                detailHolder.imageStar.alpha = 0.75f
+            if(detailHolder.imageStar.alpha != 0.75f){
+                detailHolder.imageStar.alpha = 0.75f;
+                listener.addFavorite(currentRecipe.getRecipeId())
             } else {
-                detailHolder.imageStar.alpha = 0.25f
+                detailHolder.imageStar.alpha = 0.25f;
+                listener.removeFavorite(currentRecipe.getRecipeId())
             }
         }
 
@@ -134,6 +136,9 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
             holder.textComments.text = parseAndDisplayComments(currentRecipe.getRecipeComments())
         }
 
+        if (currentRecipe.getIsFavorite()) holder.imageStar.alpha = 0.75f;
+        else holder.imageStar.alpha = 0.25f;
+
     }
 
     override fun getItemCount(): Int {
@@ -161,5 +166,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     interface ListItemListener {
         fun submitComment(comment : String, rating: Double)
         fun updateRating (newRating : Double)
+        fun addFavorite(id : String)
+        fun removeFavorite (id : String)
     }
 }

@@ -45,7 +45,7 @@ class RecipeAdapterTest : RecyclerView.Adapter<RecipeAdapterTest.RecipeViewHolde
         recipeHolder.textDetails = itemView.textViewDetails;
         recipeHolder.textRating  = itemView.textViewRating;
         recipeHolder.imageRecipe = itemView.imageViewDish;
-        recipeHolder.imageStar   = itemView.imageViewStar;
+//        recipeHolder.imageStar   = itemView.imageViewStar;
 
         return recipeHolder;
     }

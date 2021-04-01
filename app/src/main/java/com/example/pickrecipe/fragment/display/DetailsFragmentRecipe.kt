@@ -36,6 +36,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
     lateinit var id : String
     var ingredientList = mutableListOf<String>()
     var pantry = mutableListOf<String>()
+    var favorites = mutableListOf<String>()
     var checkPantryMatchString = ""
     private var myRecipeJsonType = Types.newParameterizedType(RecipeMoshi::class.java)
     private val myUserJsonType = Types.newParameterizedType(UserJson::class.java)
@@ -58,6 +59,10 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         mSocket?.on("onGetRecipe",ongetRecipe)
 
         mSocket?.on("usernameSearchForLogin", onSearchUsername)
+
+        mSocket?.on("onAddFavorite", onAddFavorite)
+
+        mSocket?.on("onRemoveFavorite", onRemoveFavorite)
 
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_details_recipe, container, false);
@@ -116,6 +121,25 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         }
     }
 
+    var onSearchUsername = Emitter.Listener {
+
+        val data = it[0] as String
+        Log.d("Fetch Username", data)
+
+        val moshi: Moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+        val adapter : JsonAdapter<UserJson> = moshi.adapter(myUserJsonType)
+
+        val user = adapter.fromJson(data)
+
+        pantry = (user?.pantry as MutableList<String>?)!!
+        favorites = (user?.favorites as MutableList<String>?)!!
+        Log.d("Retrieve Pantry", "Pantry Retrieved.")
+        val jsonRecipe = "{'id': '$id'}"
+        mSocket?.emit("getRecipe",JSONObject(jsonRecipe))
+    }
+
     var ongetRecipe = Emitter.Listener {
 
         val data = it[0] as String
@@ -136,6 +160,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
         checkPantryMatchString = checkPantryResult(ingredientList,pantry)
 
+
         activity?.runOnUiThread {
 
             id = arguments?.getString("id").toString();
@@ -148,7 +173,8 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
             var comments = arguments?.getString("comments");
 
             var recipeDetail = Recipe(
-                    id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,checkPantryMatchString
+                    id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,
+                    checkPantryMatchString,checkFavorite()
             );
 
             val recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe);
@@ -161,22 +187,18 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         }
     }
 
-    var onSearchUsername = Emitter.Listener {
 
-        val data = it[0] as String
-        Log.d("Fetch Username", data)
 
-        val moshi: Moshi = Moshi.Builder()
-                .add(KotlinJsonAdapterFactory())
-                .build()
-        val adapter : JsonAdapter<UserJson> = moshi.adapter(myUserJsonType)
+    var onAddFavorite = Emitter.Listener {
+        activity?.runOnUiThread{
+            Toast.makeText(context,"Recipe added to favorites.",Toast.LENGTH_SHORT).show()
+        }
+    }
 
-        val user = adapter.fromJson(data)
-
-        pantry = (user?.pantry as MutableList<String>?)!!
-        Log.d("Retrieve Pantry", "Pantry Retrieved.")
-        val jsonRecipe = "{'id': '$id'}"
-        mSocket?.emit("getRecipe",JSONObject(jsonRecipe))
+    var onRemoveFavorite = Emitter.Listener {
+        activity?.runOnUiThread{
+            Toast.makeText(context,"Recipe removed from favorites.",Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun checkPantryResult(ingredients : List<String>, pantry : List<String>) : String {
@@ -200,6 +222,15 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         return result
     }
 
+    private fun checkFavorite() : Boolean {
+        var isFavorite = false
+        for (recipeId in favorites) {
+            if (recipeId == id) isFavorite = true
+        }
+
+        return isFavorite
+    }
+
     override fun submitComment(comment: String, rating: Double) {
         if (comment == "") Toast.makeText(context,"Please insert a comment.",Toast.LENGTH_LONG).show()
         else {
@@ -219,6 +250,16 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         mSocket?.emit("updateRating", JSONObject(jsonString))
 
         //TODO: UPDATE CACHE DATABASE AND DISPLAY UPDATED RATING
+    }
+
+    override fun addFavorite(id: String) {
+        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
+        mSocket?.emit("addFavorite", JSONObject(jsonString))
+    }
+
+    override fun removeFavorite(id: String) {
+        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
+        mSocket?.emit("removeFavorite", JSONObject(jsonString))
     }
 
 }

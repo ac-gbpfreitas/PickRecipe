@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.pickrecipe.fragment.list.ListFragmentRecipe
 import com.example.pickrecipe.json.*
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi

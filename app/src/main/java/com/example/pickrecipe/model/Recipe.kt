@@ -8,6 +8,7 @@ class Recipe {
     private var ingredients : String = "";
     private var ingredientsList : ArrayList<Ingredient> = arrayListOf();
     private lateinit var pantryCheck : String
+    private var isFavorite : Boolean = false
 
     private lateinit var details: String;
     private lateinit var recipeTitle : String;
@@ -25,7 +26,8 @@ class Recipe {
         pic : String = "",
         ingredients : String = "",
         comments : String = "",
-        pantryCheck : String
+        pantryCheck : String,
+        isFavorite : Boolean
     ){
         this.recipeId = id;
         this.recipeTitle = title;
@@ -36,6 +38,7 @@ class Recipe {
         this.ingredients = ingredients
         this.comments = comments
         this.pantryCheck = pantryCheck
+        this.isFavorite = isFavorite
 
     }
     public fun getRecipeId() : String{
@@ -107,6 +110,9 @@ class Recipe {
         return this.pantryCheck
     }
 
+    public fun getIsFavorite() : Boolean {
+        return this.isFavorite
+    }
 
     /*
     public fun getPictures(): List<Int>{

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,10 +19,11 @@ import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.fragment_list_recipe.view.*
+import org.json.JSONObject
 import java.io.InputStream
 import java.net.URISyntaxException
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
 
     /*
     Classes Used in test:
@@ -74,6 +76,10 @@ class HomeFragment : Fragment() {
 
         mSocket?.on("onGetRecipes", onGetRecipes)
 
+//        mSocket?.on("onAddFavorite", onAddFavorite)
+//
+//        mSocket?.on("onRemoveFavorite", onRemoveFavorite)
+
         mSocket?.emit("getRecipes")
 
         // Inflate the layout for this fragment
@@ -88,7 +94,7 @@ class HomeFragment : Fragment() {
         mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
 
         mRecipeViewModel.readAllRecipes.observe(viewLifecycleOwner, {
-            recipe -> recipeAdapter.setData(recipe);
+            recipes -> recipeAdapter.setData(recipes);
         })
 
         setHasOptionsMenu(true);
@@ -134,4 +140,27 @@ class HomeFragment : Fragment() {
         mRecipeViewModel.addAllRecipes(data);
         Log.d("Got recipes", data)
     }
+
+//    var onAddFavorite = Emitter.Listener {
+//        activity?.runOnUiThread{
+//            Toast.makeText(context,"Recipe added to favorites.",Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    var onRemoveFavorite = Emitter.Listener {
+//        activity?.runOnUiThread{
+//            Toast.makeText(context,"Recipe removed from favorites.",Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
+
+//    override fun addFavorite(id: String) {
+//        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
+//        mSocket?.emit("addFavorite", JSONObject(jsonString))
+//    }
+//
+//    override fun removeFavorite(id: String) {
+//        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
+//        mSocket?.emit("removeFavorite", JSONObject(jsonString))
+//    }
 }

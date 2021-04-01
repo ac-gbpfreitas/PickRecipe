@@ -17,7 +17,7 @@ import com.example.pickrecipe.model.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe_list.view.*
 
-class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
+class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
 
     var recipeList = emptyList<RecipeEntity>();
     lateinit var currentUser : User;
@@ -43,7 +43,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         recipeHolder.textDetails = itemView.textViewDetails;
         recipeHolder.textRating  = itemView.textViewRating;
         recipeHolder.imageRecipe = itemView.imageViewDish;
-        recipeHolder.imageStar   = itemView.imageViewStar;
+//        recipeHolder.imageStar   = itemView.imageViewStar;
 
         return recipeHolder;
     }
@@ -75,13 +75,15 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
             Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
         }
 
-        holder.imageStar.setOnClickListener {
-            if(holder.imageStar.alpha != 0.75f){
-                holder.imageStar.alpha = 0.75f;
-            } else {
-                holder.imageStar.alpha = 0.25f;
-            }
-        }
+//        holder.imageStar.setOnClickListener {
+//            if(holder.imageStar.alpha != 0.75f){
+//                holder.imageStar.alpha = 0.75f;
+//                listener.addFavorite(recipeList[position].recipeId)
+//            } else {
+//                holder.imageStar.alpha = 0.25f;
+//                listener.removeFavorite(recipeList[position].recipeId)
+//            }
+//        }
     }
 
     override fun getItemCount(): Int {
@@ -93,5 +95,6 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         this.recipeList = newList;
         notifyDataSetChanged();
     }
+
 
 }

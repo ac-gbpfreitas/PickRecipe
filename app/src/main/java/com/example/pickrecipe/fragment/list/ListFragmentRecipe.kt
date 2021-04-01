@@ -13,35 +13,43 @@ import com.example.pickrecipe.model.User
 import com.example.pickrecipe.viewmodel.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_list_recipe.view.*
 
-class ListFragmentRecipe : Fragment() {
+//class ListFragmentRecipe : Fragment(), RecipeAdapter.ListItemListener {
 
-    private lateinit var mRecipeViewModel : RecipeViewModel;
+//    private lateinit var mRecipeViewModel : RecipeViewModel;
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        //Dumb variables for test
+//        //Dumb user
+//        var userTest = User();
+//
+//        // Inflate the layout for this fragment
+//        var view = inflater.inflate(R.layout.fragment_list_recipe, container, false);
+//
+//
+//        var recipeAdapter = RecipeAdapter(this@ListFragmentRecipe);
+//        val recyclerView = view.recyclerViewList;
+//        recyclerView.adapter = recipeAdapter;
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext());
+//
+//        mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
+//        mRecipeViewModel.addAllRecipes("");
+//        mRecipeViewModel.readAllRecipes.observe(viewLifecycleOwner, {
+//                recipe -> recipeAdapter.setData(recipe);
+//        })
+//
+//        setHasOptionsMenu(true);
+//        return view;
+//    }
+//
+//    override fun addFavorite(id: String) {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun removeFavorite(id: String) {
+//        TODO("Not yet implemented")
+//    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        //Dumb variables for test
-        //Dumb user
-        var userTest = User();
-
-        // Inflate the layout for this fragment
-        var view = inflater.inflate(R.layout.fragment_list_recipe, container, false);
-
-
-        var recipeAdapter = RecipeAdapter();
-        val recyclerView = view.recyclerViewList;
-        recyclerView.adapter = recipeAdapter;
-        recyclerView.layoutManager = LinearLayoutManager(requireContext());
-
-        mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-        mRecipeViewModel.addAllRecipes("");
-        mRecipeViewModel.readAllRecipes.observe(viewLifecycleOwner, { 
-                recipe -> recipeAdapter.setData(recipe);
-        })
-
-        setHasOptionsMenu(true);
-        return view;
-    }
-
-}
+//}

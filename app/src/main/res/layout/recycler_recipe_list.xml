@@ -30,14 +30,6 @@
                 android:text="TextView"
                 android:textSize="36sp" />
 
-            <ImageView
-                android:id="@+id/imageViewStar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="0.05"
-                android:alpha="0.25"
-                app:srcCompat="@drawable/star"
-                tools:layout_gravity="top" />
         </LinearLayout>
 
         <ImageView
