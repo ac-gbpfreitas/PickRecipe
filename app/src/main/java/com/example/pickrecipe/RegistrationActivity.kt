@@ -46,7 +46,9 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     fun connectToBackend() {
+
         var string: String? = ""
+
         try {
             val inputStream: InputStream = assets.open("source.txt")
             val size: Int = inputStream.available()

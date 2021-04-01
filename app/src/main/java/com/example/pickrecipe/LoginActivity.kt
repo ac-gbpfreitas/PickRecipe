@@ -1,6 +1,7 @@
 package com.example.pickrecipe
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        connectToBackend()
+                connectToBackend()
 
         mSocket?.on(Socket.EVENT_CONNECT, Emitter.Listener {
             Log.d("Connection to backend","sending")
@@ -44,11 +45,6 @@ class LoginActivity : AppCompatActivity() {
         if (bundle != null) {
             editTextLoginUsername.setText(bundle.getString("username"))
             editTextLoginPassword.setText(bundle.getString("password"))
-        }
-
-        //Botão para gustavo usar para teste -- Por favor, não deletar -- OK NAO IREI INVADIR SUA PRIVACIDADE CARA RELAXA
-        btnGustavoTest.setOnClickListener {
-            startActivity(Intent(this@LoginActivity,GustavoTest::class.java))
         }
 
         buttonSignIn.setOnClickListener {
@@ -136,6 +132,7 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     //pass whatever data needs to be used in home activity (probably userID or username)
+
                     intent.putExtra("username",user.username)
                     startActivity(intent)
                 }

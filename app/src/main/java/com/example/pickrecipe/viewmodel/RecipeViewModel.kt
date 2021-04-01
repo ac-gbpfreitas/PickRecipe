@@ -4,14 +4,12 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.pickrecipe.db.data.RecipeIngredientDatabase
 import com.example.pickrecipe.db.model.IngredientEntity
 import com.example.pickrecipe.db.model.RecipeEntity
 import com.example.pickrecipe.db.repository.IngredientRepository
 import com.example.pickrecipe.db.repository.RecipeRepository
-import com.example.pickrecipe.json.RecipeJsonReader
 import com.example.pickrecipe.json.RecipeJsonReaderTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -85,7 +85,7 @@ class DetailRecipeAdapter(
             //That is why the condition below avoid inserting the ingredient id
             */
             if(!ingredientList[j].contains("#id")){
-                textIngredient += ingredientLine+" ";
+                textIngredient += ingredientLine+"\n";
             }
         }
         holder.textIngredients.text = textIngredient;

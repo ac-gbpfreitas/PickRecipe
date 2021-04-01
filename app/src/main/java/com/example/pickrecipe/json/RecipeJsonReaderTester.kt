@@ -34,32 +34,6 @@ class RecipeJsonReaderTester (context : Context, jsonString : String) {
         //Check if the json is empty
         if(!recipeListJson.isNullOrEmpty()){
 
-            //Loop to get every record from json
-//            for((i, newRecipe) in recipeListJson.withIndex()){
-//                var ingredients : String = "";
-//                //A loop to get every ingredient from the json ingredientList, from each recipe
-//                for((j,newIngredient) in newRecipe.ingredients.withIndex()){
-//                    ingredients = newIngredient.quantity.toString()+"|";
-//                    ingredients += newIngredient.unity+"|";
-//                    ingredients += newIngredient.detail+"|";
-//                    ingredients += "#id:"+newIngredient.ingredientId+"|\n";
-//                }
-//
-//                //Create a recipeEntity Object
-//                var recipe = RecipeEntity(
-//                    newRecipe.id,
-//                    newRecipe.recipeTitle,
-//                    newRecipe.rating,
-//                    newRecipe.details,
-//                    newRecipe.directions,
-//                    newRecipe.picture,
-//                    ingredients
-//                );
-//
-//                //Add the recipe object to the list
-//                recipeEntities.add(recipe);
-//            }
-
             for (recipe in recipeListJson) {
                 var ingredients : String = ""
                 for (ingredient in recipe.ingredients) {
@@ -84,7 +58,7 @@ class RecipeJsonReaderTester (context : Context, jsonString : String) {
                     recipe.tags
                 )
 
-                  //Add the recipe object to the list
+                //Add the recipe object to the list
                 recipeEntities.add(recipe);
             }
         }

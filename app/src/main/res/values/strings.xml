@@ -44,6 +44,7 @@
     <string name="goToMyLocation">Go To My Location</string>
     <string name="leaveAComment">Leave a Comment...</string>
     <string name="submit">Submit</string>
+    <string name="recipe">Recipe</string>
 
     <string-array name="ingredients">
         <item>black pepper</item>
