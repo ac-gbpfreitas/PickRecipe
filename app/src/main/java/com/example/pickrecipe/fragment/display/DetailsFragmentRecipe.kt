@@ -41,6 +41,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
     lateinit var directions : String
     lateinit var ingredients : String
     lateinit var comments : String
+    lateinit var tags : String
     var checkPantryMatchString = ""
     var ingredientList = mutableListOf<String>()
     var pantry = mutableListOf<String>()
@@ -48,9 +49,12 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
     private var myRecipeJsonType = Types.newParameterizedType(RecipeMoshi::class.java)
     private val myUserJsonType = Types.newParameterizedType(UserJson::class.java)
     private lateinit var recipeDetailAdapter : DetailRecipeAdapter
+    private lateinit var mRecipeViewModel : RecipeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        mRecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
 
         id = arguments?.getString("id").toString();
 
@@ -179,6 +183,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
             directions = arguments?.getString("directions").toString();
             ingredients = arguments?.getString("ingredients").toString();
             comments = arguments?.getString("comments").toString();
+            tags = arguments?.getString("tags").toString();
 
             var recipeDetail = Recipe(
                     id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
@@ -252,6 +257,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
             val commentEntryCache = "$commentEntry|"
             comments += commentEntry
 
+            //for the recycler view to update
             val recipeDetail = Recipe(
                     id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
                     checkPantryMatchString,checkFavorite()
@@ -259,7 +265,9 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
             recipeDetailAdapter.setData(recipeDetail)
 
-            //TODO: UPDATE CACHE DATABASE AND COMMENT LIST
+            //for the cache database to update
+            val recipeEntityDetail = RecipeEntity(id,title,details,ingredients,directions,rating.toDouble(),comments,picture,tags)
+            mRecipeViewModel.addRecipe(recipeEntityDetail)
         }
     }
 
@@ -274,7 +282,9 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
         recipeDetailAdapter.setData(recipeDetail)
 
-        //TODO: UPDATE CACHE DATABASE AND DISPLAY UPDATED RATING
+        //for the cache database to update
+        val recipeEntityDetail = RecipeEntity(id,title,details,ingredients,directions,newRating,comments,picture,tags)
+        mRecipeViewModel.addRecipe(recipeEntityDetail)
     }
 
     override fun addFavorite(id: String) {

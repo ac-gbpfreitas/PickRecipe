@@ -91,6 +91,8 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
                 Log.d("RATING","$numberOfComments, $sum, $newRating")
 
                 listener.updateRating(newRating)
+
+                detailHolder.editTextComment.setText("")
             }
         }
 
@@ -164,7 +166,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     }
 
     interface ListItemListener {
-        fun submitComment(comment : String, rating: Double)
+        fun submitComment(comment : String, userRating: Double)
         fun updateRating (newRating : Double)
         fun addFavorite(id : String)
         fun removeFavorite (id : String)
