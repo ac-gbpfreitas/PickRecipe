@@ -137,6 +137,7 @@ class HomeFragment : Fragment(){
 
     var onGetRecipes = Emitter.Listener {
         data = it[0] as String
+        mRecipeViewModel.deleteAllRecipes()
         mRecipeViewModel.addAllRecipes(data);
         Log.d("Got recipes", data)
     }

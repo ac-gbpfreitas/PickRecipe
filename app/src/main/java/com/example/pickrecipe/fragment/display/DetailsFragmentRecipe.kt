@@ -79,8 +79,6 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_details_recipe, container, false);
 
-        var mRecipeViewModel : RecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-
         setHasOptionsMenu(true);
         return view;
     }

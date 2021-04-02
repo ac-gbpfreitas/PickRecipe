@@ -22,7 +22,6 @@ import java.util.*
 class LoginActivity : AppCompatActivity() {
 
     var mSocket: Socket? = null
-    var usernameExists : Boolean = false
     private val myType = Types.newParameterizedType(UserJson::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
