@@ -25,38 +25,6 @@ import java.net.URISyntaxException
 
 class HomeFragment : Fragment(){
 
-    /*
-    Classes Used in test:
-
-        Raw data file: recipes.json. I will need to replace this with data coming from the backend
-
-        Entities:
-            Moshi: RecipeJson
-            Room and Frontend: RecipeEntity (inside model folder inside db folder lol)
-
-        JsonReader and Entity Converter: RecipeJsonReaderTester inside json folder
-        Adapter: RecipeAdapter inside adapters folder
-        Fragment: ListFragmentRecipe inside list folder inside fragment folder
-        ViewModel: RecipeViewModel inside viewmodel folder
-        Repository: RecipeRepository inside repository folder
-        Dao: RecipeDao inside data folder inside db folder
-        DB: RecipeIngredientDatabase inside those same folders
-
-
-        Functionality:
-            viewModel will access the database with the dao and insert all data using repository if not inserted
-            them it will read all data that will come into a list of recipes, set that list to the adapter
-
-        TODO:
-            create the recipe database inside mongoDB and properly access it using socket, probably in the RecipeJsonReaderTester.
-            modify both Moshi and room entities and uninstall the app to reload new DB schema
-            see if I need to modify any data on the top-level view with the new attributes, see the adapter
-            copy codes from viewModels and fragment. Good luck to me lol
-            qd eu for converter o json eu dou parse nas strings com delimitador
-
-
-    */
-
     private lateinit var mRecipeViewModel : RecipeViewModel;
     var mSocket: Socket? = null
     private lateinit var data : String
@@ -75,10 +43,6 @@ class HomeFragment : Fragment(){
         mSocket?.on("notification", onNotification)
 
         mSocket?.on("onGetRecipes", onGetRecipes)
-
-//        mSocket?.on("onAddFavorite", onAddFavorite)
-//
-//        mSocket?.on("onRemoveFavorite", onRemoveFavorite)
 
         mSocket?.emit("getRecipes")
 
@@ -141,27 +105,4 @@ class HomeFragment : Fragment(){
         mRecipeViewModel.addAllRecipes(data);
         Log.d("Got recipes", data)
     }
-
-//    var onAddFavorite = Emitter.Listener {
-//        activity?.runOnUiThread{
-//            Toast.makeText(context,"Recipe added to favorites.",Toast.LENGTH_SHORT).show()
-//        }
-//    }
-//
-//    var onRemoveFavorite = Emitter.Listener {
-//        activity?.runOnUiThread{
-//            Toast.makeText(context,"Recipe removed from favorites.",Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
-
-//    override fun addFavorite(id: String) {
-//        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
-//        mSocket?.emit("addFavorite", JSONObject(jsonString))
-//    }
-//
-//    override fun removeFavorite(id: String) {
-//        val jsonString = "{'username':'${activity?.intent?.extras?.getString("username")}','id':'$id'}"
-//        mSocket?.emit("removeFavorite", JSONObject(jsonString))
-//    }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PickRecipe</string>
+    <string name="app_name">Pick Your Recipe</string>
     <string name="recipeTitle">Recipe Title</string>
     <string name="recipeDescription">Recipe Description</string>
     <string name="recipeRate">5.0</string>
@@ -45,6 +45,7 @@
     <string name="leaveAComment">Leave a Comment...</string>
     <string name="submit">Submit</string>
     <string name="offlineMode">Offline Mode</string>
+    <string name="recipeDetails">Recipe Details</string>
 
     <string-array name="ingredients">
         <item>black pepper</item>

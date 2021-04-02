@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/DetailsFragmentRecipe"
         android:name="com.example.pickrecipe.fragment.offline.DetailsFragmentRecipeOffline"
-        android:label="fragment_details_recipe_offline"
+        android:label="@string/recipeDetails"
         tools:layout="@layout/fragment_details_recipe_offline" />
 
 </navigation>

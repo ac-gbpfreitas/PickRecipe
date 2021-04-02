@@ -11,9 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
-import com.example.pickrecipe.ui.pantry.PantryAdapter
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 
 class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemListener, private val offlineMode : Boolean
 
@@ -49,7 +47,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
         detailHolder.imageStar = itemView.findViewById(R.id.imageStarDetails);
         detailHolder.imageRecipe = itemView.findViewById(R.id.imageRecipeDetails);
-        detailHolder.textTitle = itemView.findViewById(R.id.textRecipeTitleDetails);
+        detailHolder.textTitle = itemView.findViewById(R.id.textTitleDetails);
         detailHolder.textIngredients = itemView.findViewById(R.id.textIngredientDetails);
         detailHolder.textRating = itemView.findViewById(R.id.textRatingDetails);
         detailHolder.textDirections = itemView.findViewById(R.id.textDirectionsDetails);

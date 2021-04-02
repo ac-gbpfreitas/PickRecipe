@@ -40,9 +40,9 @@ class DetailRecipeAdapterTester(
 
         detailHolder.imageStar = itemView.findViewById(R.id.imageStarDetails);
         detailHolder.imageRecipe = itemView.findViewById(R.id.imageRecipeDetails);
-        detailHolder.textTitle = itemView.findViewById(R.id.textRecipeTitleDetails);
+//        detailHolder.textTitle = itemView.findViewById(R.id.cu);
         detailHolder.textIngredients = itemView.findViewById(R.id.textIngredientDetails);
-        detailHolder.textRating = itemView.findViewById(R.id.textRatingDetails);
+        detailHolder.textRating = itemView.findViewById(R.id.textTitleDetails);
         detailHolder.textDirections = itemView.findViewById(R.id.textDirectionsDetails);
         detailHolder.btnBack = itemView.findViewById(R.id.btnBackDetail);
 
