@@ -188,7 +188,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
                     checkPantryMatchString,checkFavorite()
             );
 
-            recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe);
+            recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe,false);
             recipeDetailAdapter.setData(recipeDetail);
 
             val recyclerView = view?.recyclerViewDetail;

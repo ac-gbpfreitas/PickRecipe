@@ -102,7 +102,7 @@ class StoresActivity : AppCompatActivity(), OnMapReadyCallback {
                     for (placeLikelihood in placeLikelihood) {
                         val currPlace = placeLikelihood.place
                         val currLatLng = currPlace.latLng
-                        mMap.addMarker(currLatLng?.let { MarkerOptions().position(it).title("Grocery Store") })
+                        mMap.addMarker(currLatLng?.let { MarkerOptions().position(it).title("Establishment") })
                     }
 
 

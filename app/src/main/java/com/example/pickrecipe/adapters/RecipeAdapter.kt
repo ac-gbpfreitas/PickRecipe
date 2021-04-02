@@ -27,7 +27,6 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         lateinit var textRating  : TextView;
         lateinit var textDetails : TextView;
         lateinit var imageRecipe : ImageView;
-        lateinit var imageStar   : ImageView;
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {

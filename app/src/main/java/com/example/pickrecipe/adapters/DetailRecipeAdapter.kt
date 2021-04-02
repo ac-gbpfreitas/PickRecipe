@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.NonNull
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
@@ -14,7 +15,7 @@ import com.example.pickrecipe.ui.pantry.PantryAdapter
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
-class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemListener
+class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemListener, private val offlineMode : Boolean
 
     ) : RecyclerView.Adapter<DetailRecipeAdapter.DetailRecipeViewHolder>() {
 
@@ -34,6 +35,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         lateinit var btnSubmit : Button;
         lateinit var editTextComment : EditText;
         lateinit var spinnerRating : Spinner
+        lateinit var commentBlock : LinearLayout
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailRecipeViewHolder {
@@ -57,6 +59,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         detailHolder.editTextComment = itemView.findViewById(R.id.editTextLeaveAComment)
         detailHolder.spinnerRating = itemView.findViewById(R.id.spinnerRatingScores)
         detailHolder.textPantryMatch = itemView.findViewById(R.id.textIngredientPantryMatch)
+        detailHolder.commentBlock = itemView.findViewById(R.id.commentBlock)
 
 
         detailHolder.imageStar.setOnClickListener {
@@ -70,8 +73,12 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         }
 
         detailHolder.btnBack.setOnClickListener {
-//            detailHolder.itemView.findNavController().navigate(R.id.ListFragment);
-            detailHolder.itemView.findNavController().navigate(R.id.nav_home);
+
+            if (offlineMode) {
+                detailHolder.itemView.findNavController().navigate(R.id.ListFragment);
+            } else {
+                detailHolder.itemView.findNavController().navigate(R.id.nav_home);
+            }
         }
 
         detailHolder.btnSubmit.setOnClickListener {
@@ -140,6 +147,12 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
         if (currentRecipe.getIsFavorite()) holder.imageStar.alpha = 0.75f;
         else holder.imageStar.alpha = 0.25f;
+
+        if (offlineMode) {
+            holder.commentBlock.isVisible = false
+            holder.btnSubmit.isVisible = false
+            holder.imageStar.isVisible = false
+        }
 
     }
 
