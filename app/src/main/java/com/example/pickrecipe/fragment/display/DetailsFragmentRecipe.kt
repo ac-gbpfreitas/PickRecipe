@@ -226,7 +226,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
             result = "WARNING: some of this recipe's ingredients were not found in your pantry. You can either add them or find stores near you to buy them."
             result += "\nYou are missing:"
             for (missingIngredient in missingIngredients) {
-                result += "\n${missingIngredient.capitalize()}"
+                result += "\n${missingIngredient.trim().capitalize()}"
             }
         }
 
