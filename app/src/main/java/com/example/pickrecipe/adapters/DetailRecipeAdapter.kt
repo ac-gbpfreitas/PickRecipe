@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.model.Recipe
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemListener, private val offlineMode : Boolean
 
@@ -82,25 +83,21 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         }
 
         detailHolder.btnSubmit.setOnClickListener {
-            val comment = detailHolder.editTextComment.text.toString()
+            var comment = detailHolder.editTextComment.text.toString()
             val rating = detailHolder.spinnerRating.selectedItemPosition.toDouble()
+            if (comment == "") comment = "Empty comment"
             listener.submitComment(comment,rating)
 
-            var newRating = 0.0
-            if (currentRecipe.getRating() == 0.0) {
-                newRating = rating
-                listener.updateRating(newRating)
-            } else {
-                val numberOfComments = currentRecipe.getRecipeComments().split("|").size - 1
-                val sum = currentRecipe.getRating() * numberOfComments
-                newRating = (rating + sum) / (numberOfComments + 1)
+            val newRating: Double
+            val numberOfComments = currentRecipe.getRecipeComments().split("|").size - 1
+            val sum = currentRecipe.getRating() * numberOfComments
+            newRating = (rating + sum) / (numberOfComments + 1)
+            Log.d("RATING","$numberOfComments, $sum, $newRating")
 
-                Log.d("RATING","$numberOfComments, $sum, $newRating")
+            listener.updateRating(newRating)
 
-                listener.updateRating(newRating)
+            detailHolder.editTextComment.setText("")
 
-                detailHolder.editTextComment.setText("")
-            }
         }
 
         if (currentRecipe.getPantryCheck() == "") detailHolder.textPantryMatch.text = "Loading Pantry results..."
@@ -114,7 +111,9 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     override fun onBindViewHolder(holder: DetailRecipeViewHolder, position: Int) {
         holder.textTitle.text = this.currentRecipe.getRecipeTitle();
         holder.textTags.text = this.currentRecipe.getTags()
-        holder.textRating.text = "Rating: "+this.currentRecipe.getRating();
+
+        val df = DecimalFormat("#.##")
+        holder.textRating.text = "Rating: ${df.format(this.currentRecipe.getRating())}";
 
         var directionsSteps = this.currentRecipe.getDirections().split(".")
         var directionsParsed = "Directions:\n"

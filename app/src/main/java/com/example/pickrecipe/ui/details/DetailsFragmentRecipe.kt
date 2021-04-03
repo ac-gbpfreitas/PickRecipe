@@ -242,30 +242,19 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
     }
 
     override fun submitComment(comment: String, userRating: Double) {
-        if (comment == "") Toast.makeText(context,"Please insert a comment.",Toast.LENGTH_LONG).show()
-        else {
-            val username = activity?.intent?.extras?.getString("username")
-            val commentEntry = "$comment (by $username, Rating: ${userRating.toInt()})"
-            Log.d("SUBMIT COMMENT",commentEntry)
 
-            val jsonString = "{'comment':'${commentEntry}', 'id' : '${id}'}"
-            mSocket?.emit("addComment", JSONObject(jsonString))
 
-            val commentEntryCache = "$commentEntry|"
-            comments += commentEntry
+        val username = activity?.intent?.extras?.getString("username")
+        val commentEntry = "$comment (by $username, Rating: ${userRating.toInt()})"
+        Log.d("SUBMIT COMMENT",commentEntry)
 
-            //for the recycler view to update
-            val recipeDetail = Recipe(
-                    id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
-                    checkPantryMatchString,checkFavorite(),tags
-            )
+        val jsonString = "{'comment':'${commentEntry}', 'id' : '${id}'}"
+        mSocket?.emit("addComment", JSONObject(jsonString))
 
-            recipeDetailAdapter.setData(recipeDetail)
+        val commentEntryCache = "$commentEntry|"
+        comments += commentEntryCache
 
-            //for the cache database to update
-            val recipeEntityDetail = RecipeEntity(id,title,details,ingredients,directions,rating.toDouble(),comments,picture,tags)
-            mRecipeViewModel.addRecipe(recipeEntityDetail)
-        }
+
     }
 
     override fun updateRating(newRating: Double) {

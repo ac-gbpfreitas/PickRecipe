@@ -14,6 +14,7 @@ import com.example.pickrecipe.db.model.RecipeEntity
 import com.example.pickrecipe.unused.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe_list.view.*
+import java.text.DecimalFormat
 
 class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
 
@@ -46,7 +47,9 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.textTitle.text = this.recipeList[position].recipeTitle;
         holder.textDetails.text = this.recipeList[position].details;
-        holder.textRating.text = "Rating: "+this.recipeList[position].rating.toString();
+
+        val df = DecimalFormat("#.##")
+        holder.textRating.text = "Rating: ${df.format(this.recipeList[position].rating)}";
 
         val bundle = bundleOf(
             "id" to this.recipeList[position].recipeId,
