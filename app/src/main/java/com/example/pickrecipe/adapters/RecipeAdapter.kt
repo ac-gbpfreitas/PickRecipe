@@ -1,7 +1,5 @@
 package com.example.pickrecipe.adapters
 
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +11,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
 import com.example.pickrecipe.db.model.RecipeEntity
-import com.example.pickrecipe.model.User
+import com.example.pickrecipe.unused.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe_list.view.*
 
 class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
 
     var recipeList = emptyList<RecipeEntity>();
-    lateinit var currentUser : User;
 
     inner class RecipeViewHolder(@NonNull itemView : View) : RecyclerView.ViewHolder(itemView){
         lateinit var textTitle   : TextView;
@@ -42,13 +39,11 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         recipeHolder.textDetails = itemView.textViewDetails;
         recipeHolder.textRating  = itemView.textViewRating;
         recipeHolder.imageRecipe = itemView.imageViewDish;
-//        recipeHolder.imageStar   = itemView.imageViewStar;
 
         return recipeHolder;
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        var currentItem = this.recipeList[position];
         holder.textTitle.text = this.recipeList[position].recipeTitle;
         holder.textDetails.text = this.recipeList[position].details;
         holder.textRating.text = "Rating: "+this.recipeList[position].rating.toString();
@@ -74,24 +69,13 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         } else {
             Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
         }
-
-//        holder.imageStar.setOnClickListener {
-//            if(holder.imageStar.alpha != 0.75f){
-//                holder.imageStar.alpha = 0.75f;
-//                listener.addFavorite(recipeList[position].recipeId)
-//            } else {
-//                holder.imageStar.alpha = 0.25f;
-//                listener.removeFavorite(recipeList[position].recipeId)
-//            }
-//        }
     }
 
     override fun getItemCount(): Int {
         return this.recipeList.size;
     }
 
-    fun setData(/*newUser : User,*/ newList : List<RecipeEntity>){
-        //this.currentUser = newUser;
+    fun setData(newList : List<RecipeEntity>){
         this.recipeList = newList;
         notifyDataSetChanged();
     }

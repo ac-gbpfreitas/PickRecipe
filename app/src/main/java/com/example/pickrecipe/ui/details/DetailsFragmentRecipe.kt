@@ -1,4 +1,4 @@
-package com.example.pickrecipe.fragment.display
+package com.example.pickrecipe.ui.details
 
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +14,6 @@ import com.example.pickrecipe.adapters.DetailRecipeAdapter
 import com.example.pickrecipe.db.model.RecipeEntity
 import com.example.pickrecipe.json.RecipeMoshi
 import com.example.pickrecipe.json.UserJson
-import com.example.pickrecipe.model.Ingredient
 import com.example.pickrecipe.model.Recipe
 import com.example.pickrecipe.viewmodel.RecipeViewModel
 import com.squareup.moshi.JsonAdapter

@@ -44,9 +44,8 @@ class LoginActivity : AppCompatActivity() {
             editTextLoginPassword.setText(bundle.getString("password"))
         }
 
-        //Botão para gustavo usar para teste -- Por favor, não deletar -- OK NAO IREI INVADIR SUA PRIVACIDADE CARA RELAXA
-        btnGustavoTest.setOnClickListener {
-            startActivity(Intent(this@LoginActivity,GustavoTest::class.java))
+        btnOfflineMode.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,OfflineActivity::class.java))
         }
 
         buttonSignIn.setOnClickListener {

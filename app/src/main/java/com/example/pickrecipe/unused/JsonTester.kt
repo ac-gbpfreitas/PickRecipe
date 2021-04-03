@@ -1,9 +1,10 @@
-package com.example.pickrecipe.json
+package com.example.pickrecipe.unused
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pickrecipe.fragment.test.RecipeAdapterTest
+import com.example.pickrecipe.json.FileReaderHelper
+import com.example.pickrecipe.json.RecipeJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -11,10 +12,10 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class JsonTester (context : Context, fileName : String, recyclerView : RecyclerView) {
 
-    private var recipeJson = Types.newParameterizedType(List::class.java,RecipeJson::class.java)
+    private var recipeJson = Types.newParameterizedType(List::class.java, RecipeJson::class.java)
 
     init{
-        val jsonContent = FileReaderHelper.getDataFromAssets(context,fileName);
+        val jsonContent = FileReaderHelper.getDataFromAssets(context, fileName);
         val recipeMoshi : Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build();
         val recipeAdapter : JsonAdapter<List<RecipeJson>> = recipeMoshi.adapter(recipeJson);
 

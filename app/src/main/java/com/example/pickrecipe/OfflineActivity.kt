@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 
-class GustavoTest : AppCompatActivity() {
+class OfflineActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gustavo_test);
+        setContentView(R.layout.activity_offline);
 
         /*********************Tests*********************/
         //val recyclerViewDisplay : RecyclerView = findViewById(R.id.fragment);

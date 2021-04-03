@@ -1,17 +1,14 @@
-package com.example.pickrecipe.fragment.offline
+package com.example.pickrecipe.ui.offline
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pickrecipe.R
 import com.example.pickrecipe.adapters.DetailRecipeAdapter
 import com.example.pickrecipe.model.Recipe
-import com.example.pickrecipe.viewmodel.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_details_recipe_offline.view.*
 
 

@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
 
     <Button
-        android:id="@+id/btnGustavoTest"
+        android:id="@+id/btnOfflineMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"

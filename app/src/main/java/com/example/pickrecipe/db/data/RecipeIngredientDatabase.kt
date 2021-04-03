@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.pickrecipe.db.model.IngredientEntity
+import com.example.pickrecipe.unused.IngredientEntity
 import com.example.pickrecipe.db.model.RecipeEntity
+import com.example.pickrecipe.unused.IngredientDao
 
 
-@Database(entities = [RecipeEntity::class,IngredientEntity::class], version = 1, exportSchema = false)
+@Database(entities = [RecipeEntity::class, IngredientEntity::class], version = 1, exportSchema = false)
 abstract class RecipeIngredientDatabase : RoomDatabase() {
 
     abstract fun recipeDao() : RecipeDao

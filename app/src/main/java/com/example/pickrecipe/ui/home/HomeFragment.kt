@@ -5,21 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pickrecipe.R
 import com.example.pickrecipe.adapters.RecipeAdapter
-import com.example.pickrecipe.model.User
 import com.example.pickrecipe.viewmodel.RecipeViewModel
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.fragment_list_recipe.view.*
-import org.json.JSONObject
 import java.io.InputStream
 import java.net.URISyntaxException
 

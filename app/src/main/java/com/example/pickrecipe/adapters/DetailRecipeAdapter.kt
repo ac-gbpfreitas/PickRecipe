@@ -18,7 +18,6 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
 
     ) : RecyclerView.Adapter<DetailRecipeAdapter.DetailRecipeViewHolder>() {
 
-
     lateinit var currentRecipe : Recipe;
 
     inner class DetailRecipeViewHolder(@NonNull itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -113,7 +112,6 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     }
 
     override fun onBindViewHolder(holder: DetailRecipeViewHolder, position: Int) {
-        //var currentItem = this.currentRecipe;
         holder.textTitle.text = this.currentRecipe.getRecipeTitle();
         holder.textTags.text = this.currentRecipe.getTags()
         holder.textRating.text = "Rating: "+this.currentRecipe.getRating();

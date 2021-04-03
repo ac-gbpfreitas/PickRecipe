@@ -1,4 +1,4 @@
-package com.example.pickrecipe.model
+package com.example.pickrecipe.unused
 
 import java.io.FileDescriptor
 

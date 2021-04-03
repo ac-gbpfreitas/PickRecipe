@@ -1,4 +1,4 @@
-package com.example.pickrecipe.adapters
+package com.example.pickrecipe.unused
 
 import android.util.Log
 import android.view.LayoutInflater
