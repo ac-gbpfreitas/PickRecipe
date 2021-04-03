@@ -31,11 +31,13 @@ class DetailsFragmentRecipeOffline : Fragment(), DetailRecipeAdapter.ListItemLis
         var directions = arguments?.getString("directions");
         var ingredients = arguments?.getString("ingredients");
         var comments = arguments?.getString("comments");
+        var tags = arguments?.getString("tags");
 
         var pantryCheck = "You are in offline mode. Please login for pantry check."
 
         var recipeDetail = Recipe(
-                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,pantryCheck,false
+                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,pantryCheck,
+            false,tags!!
         );
 
 

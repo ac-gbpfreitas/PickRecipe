@@ -185,7 +185,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
             var recipeDetail = Recipe(
                     id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
-                    checkPantryMatchString,checkFavorite()
+                    checkPantryMatchString,checkFavorite(),tags
             );
 
             recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipe,false);
@@ -258,7 +258,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
             //for the recycler view to update
             val recipeDetail = Recipe(
                     id,title,details,directions,rating.toDouble(),picture,ingredients,comments,
-                    checkPantryMatchString,checkFavorite()
+                    checkPantryMatchString,checkFavorite(),tags
             )
 
             recipeDetailAdapter.setData(recipeDetail)
@@ -275,7 +275,7 @@ class DetailsFragmentRecipe : Fragment(), DetailRecipeAdapter.ListItemListener {
 
         val recipeDetail = Recipe(
                 id,title,details,directions,newRating,picture,ingredients,comments,
-                checkPantryMatchString,checkFavorite()
+                checkPantryMatchString,checkFavorite(),tags
         )
 
         recipeDetailAdapter.setData(recipeDetail)

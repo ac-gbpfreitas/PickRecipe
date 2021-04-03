@@ -1,5 +1,6 @@
 package com.example.pickrecipe.adapters
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         lateinit var textDirections : TextView;
         lateinit var textComments : TextView;
         lateinit var textPantryMatch : TextView;
+        lateinit var textTags : TextView;
         lateinit var imageRecipe : ImageView;
         lateinit var imageStar   : ImageView;
         lateinit var btnBack : Button;
@@ -58,6 +60,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         detailHolder.spinnerRating = itemView.findViewById(R.id.spinnerRatingScores)
         detailHolder.textPantryMatch = itemView.findViewById(R.id.textIngredientPantryMatch)
         detailHolder.commentBlock = itemView.findViewById(R.id.commentBlock)
+        detailHolder.textTags = itemView.findViewById(R.id.textTagsDetails)
 
 
         detailHolder.imageStar.setOnClickListener {
@@ -112,21 +115,25 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
     override fun onBindViewHolder(holder: DetailRecipeViewHolder, position: Int) {
         //var currentItem = this.currentRecipe;
         holder.textTitle.text = this.currentRecipe.getRecipeTitle();
+        holder.textTags.text = this.currentRecipe.getTags()
         holder.textRating.text = "Rating: "+this.currentRecipe.getRating();
-        holder.textDirections.text = this.currentRecipe.getDirections();
+
+        var directionsSteps = this.currentRecipe.getDirections().split(".")
+        var directionsParsed = "Directions:\n"
+        for (directionsStep in directionsSteps) {
+            if (directionsStep != "") {
+                directionsParsed += "➤ ${directionsStep.trim()}.\n"
+            }
+        }
+        holder.textDirections.text = directionsParsed
 
         //Parse Ingredients String
         var ingredientList = this.currentRecipe.getIngredients().split("|");
 
-        var textIngredient : String = "";
-        //for((j,ingredientLine) in ingredientList.withIndex()){
-        for((j,ingredientLine) in ingredientList.withIndex()){
-            /*
-            //I've add the ingredient id in the string, just in case
-            //That is why the condition below avoid inserting the ingredient id
-            */
-            if(!ingredientList[j].contains("#id")){
-                textIngredient += ingredientLine+" ";
+        var textIngredient : String = "Ingredients:\n";
+        for(ingredientLine in ingredientList){
+            if (ingredientLine != "") {
+                textIngredient += "${ingredientLine.trim().capitalize()}\n";
             }
         }
         holder.textIngredients.text = textIngredient;
@@ -135,6 +142,12 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
             holder.imageRecipe.setImageResource(R.drawable.food);
         } else {
             Picasso.get().load(currentRecipe.getPicture()).into(holder.imageRecipe);
+        }
+
+        if (holder.textPantryMatch.text != "You're all set! You have every ingredient of this recipe in your pantry.") {
+            holder.textPantryMatch.setTextColor(Color.RED)
+        } else {
+            holder.textPantryMatch.setTextColor(Color.GREEN)
         }
 
         if (currentRecipe.getRecipeComments() == "") {
@@ -169,7 +182,7 @@ class DetailRecipeAdapter( private val listener: DetailRecipeAdapter.ListItemLis
         val commentList = comments.split("|")
         for (comment in commentList) {
             if (comment != "") {
-                parsedComments += "$comment\n"
+                parsedComments += "• $comment\n"
             }
         }
 
