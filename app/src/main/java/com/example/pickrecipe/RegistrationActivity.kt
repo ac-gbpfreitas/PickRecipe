@@ -35,7 +35,8 @@ class RegistrationActivity : AppCompatActivity() {
 
         buttonRegister.setOnClickListener {
             val username = editTextRegistrationUsername.text.toString().trim()
-            fetchUsername(username)
+            if (username.isNotEmpty()) fetchUsername(username)
+            else Toast.makeText(this, "Username must be 3 chars min, no spaces.", Toast.LENGTH_LONG).show()
 
         }
 
