@@ -1,4 +1,4 @@
-package com.example.pickrecipe.db.model
+package com.example.pickrecipe.unused
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.pickrecipe.fragment.list.ListFragmentRecipe
 import com.example.pickrecipe.json.*
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -24,7 +23,6 @@ import java.util.*
 class LoginActivity : AppCompatActivity() {
 
     var mSocket: Socket? = null
-    var usernameExists : Boolean = false
     private val myType = Types.newParameterizedType(UserJson::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +43,10 @@ class LoginActivity : AppCompatActivity() {
         if (bundle != null) {
             editTextLoginUsername.setText(bundle.getString("username"))
             editTextLoginPassword.setText(bundle.getString("password"))
+        }
+
+        btnOfflineMode.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,OfflineActivity::class.java))
         }
 
         buttonSignIn.setOnClickListener {

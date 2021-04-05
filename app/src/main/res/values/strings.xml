@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PickRecipe</string>
+    <string name="app_name">Pick Your Recipe</string>
     <string name="recipeTitle">Recipe Title</string>
     <string name="recipeDescription">Recipe Description</string>
     <string name="recipeRate">5.0</string>
@@ -46,12 +46,51 @@
     <string name="submit">Submit</string>
     <string name="recipe">Recipe</string>
 
+    <string name="offlineMode">Offline Mode</string>
+    <string name="recipeDetails">Recipe Details</string>
+
+
     <string-array name="ingredients">
+        <item>all-purpose flour</item>
+        <item>baking soda</item>
+        <item>baking powder</item>
+        <item>banana</item>
+        <item>basil</item>
         <item>black pepper</item>
+        <item>brown sugar</item>
+        <item>butter</item>
+        <item>cheese</item>
         <item>chicken breast</item>
+        <item>cinnamon</item>
+        <item>cream cheese</item>
+        <item>egg</item>
+        <item>flax seeds</item>
         <item>garlic</item>
+        <item>garlic powder</item>
+        <item>gluten-free all-purpose flour</item>
+        <item>heavy cream</item>
+        <item>lemon</item>
+        <item>macaroni</item>
+        <item>milk</item>
+        <item>oats</item>
+        <item>oil</item>
         <item>onion</item>
+        <item>panko</item>
+        <item>parmesan</item>
+        <item>parsley</item>
+        <item>peanut butter</item>
+        <item>pepper</item>
+        <item>potato</item>
+        <item>rice milk</item>
+        <item>salmon</item>
         <item>salt</item>
+        <item>strawberry</item>
+        <item>strawberry yogurt</item>
+        <item>sugar</item>
+        <item>vanilla extract</item>
+        <item>vegetable broth</item>
+        <item>water</item>
+        <item>white pepper</item>
     </string-array>
 
     <string-array name="ratingScores">

@@ -39,7 +39,7 @@ class PantryAdapter(var ingredientList: MutableList<String> ,
         holder.fabDeleteIngredient?.setOnClickListener {
             ingredientList.removeAt(position)
             changeData(ingredientList)
-            listener.deleteIngredientOnBackend(holder.textViewIngredient?.text.toString())
+            listener.deleteIngredientOnBackend(holder.textViewIngredient?.text.toString().decapitalize())
         }
     }
 

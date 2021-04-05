@@ -1,27 +1,20 @@
 package com.example.pickrecipe.json
 
 import android.content.Context
-import android.util.Log
 import com.example.pickrecipe.db.model.RecipeEntity
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class RecipeJsonReaderTester (context : Context, jsonString : String) {
+class RecipeJsonReader (context : Context, jsonString : String) {
 
 
     //Refer to Json class file and create a list
-//    private var myRecipeJsonType = Types.newParameterizedType(List::class.java, RecipeJson::class.java)
     private var myRecipeJsonType = Types.newParameterizedType(List::class.java, RecipeMoshi::class.java)
-
 
     //List of Recipe and Ingredient Entities - Database related
     var recipeEntities : ArrayList<RecipeEntity> = arrayListOf();
-
-    companion object{
-        var recipeInventory : ArrayList<RecipeMoshi> = arrayListOf();
-    }
 
     init{
 

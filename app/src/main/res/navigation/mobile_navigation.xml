@@ -29,7 +29,7 @@
         tools:layout="@layout/activity_stores" />
     <fragment
         android:id="@+id/DetailsFragmentRecipe"
-        android:name="com.example.pickrecipe.fragment.display.DetailsFragmentRecipe"
-        android:label="@string/recipe"
+        android:name="com.example.pickrecipe.ui.details.DetailsFragmentRecipe"
+        android:label="@string/recipeDetails"
         tools:layout="@layout/fragment_details_recipe" />
 </navigation>

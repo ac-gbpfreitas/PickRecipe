@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
-    android:layout_marginTop="24dp"
-    android:layout_marginRight="8dp">
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.95"
+                android:gravity="center"
                 android:text="TextView"
                 android:textSize="36sp" />
 <!--
@@ -39,18 +40,22 @@
                 app:srcCompat="@drawable/star"
                 tools:layout_gravity="top" />
 -->
+
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageViewDish"
             android:layout_width="350dp"
             android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textViewDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -58,6 +63,8 @@
             android:id="@+id/textViewRating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
             android:textSize="24sp" />
 

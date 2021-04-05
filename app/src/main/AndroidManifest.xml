@@ -34,7 +34,7 @@
         <activity
             android:name=".StoresActivity"
             android:label="@string/title_activity_stores"/>
-        <activity android:name=".GustavoTest" />
+        <activity android:name=".OfflineActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity

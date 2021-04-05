@@ -1,19 +1,21 @@
 package com.example.pickrecipe.model
 
+import com.example.pickrecipe.unused.Ingredient
+
 class Recipe {
 
     private var recipeId : String = "0";
     private var rating: Double = 0.0;
     private var picture : String = "";
     private var ingredients : String = "";
-    private var ingredientsList : ArrayList<Ingredient> = arrayListOf();
+    private var pantryCheck : String
+    private var isFavorite : Boolean = false
+    private var tags : String = ""
 
-    private lateinit var details: String;
-    private lateinit var recipeTitle : String;
-    private lateinit var directions: String;
-    private lateinit var comments: String
-    //private var pictures: ArrayList<Int> = arrayListOf();
-    //private var videos: ArrayList<Int> = arrayListOf();
+    private var details: String;
+    private var recipeTitle : String;
+    private var directions: String;
+    private var comments: String
 
     constructor(
         id : String = "",
@@ -23,7 +25,10 @@ class Recipe {
         rating : Double = 0.0,
         pic : String = "",
         ingredients : String = "",
-        comments : String = ""
+        comments : String = "",
+        pantryCheck : String,
+        isFavorite : Boolean,
+        tags : String
     ){
         this.recipeId = id;
         this.recipeTitle = title;
@@ -33,6 +38,9 @@ class Recipe {
         this.picture = pic;
         this.ingredients = ingredients
         this.comments = comments
+        this.pantryCheck = pantryCheck
+        this.isFavorite = isFavorite
+        this.tags = tags
 
     }
     public fun getRecipeId() : String{
@@ -57,7 +65,7 @@ class Recipe {
         this.recipeTitle = newTitle;
     }
 
-    public fun getRate(): Double{
+    public fun getRating(): Double{
         return this.rating;
     }
     public fun setRating(newRate: Double){
@@ -93,29 +101,16 @@ class Recipe {
         this.picture = pic;
     }
 
-    public fun setIngredientsList(newList : ArrayList<Ingredient>){
-        this.ingredientsList = newList;
-    }
-    public fun getIngredientsLists() : ArrayList<Ingredient>{
-        return this.ingredientsList;
+    public fun getPantryCheck() : String {
+        return this.pantryCheck
     }
 
-
-
-    /*
-    public fun getPictures(): List<Int>{
-        return this.pictures;
-    }
-    public fun setPictures(picsList: List<Int>){
-        this.pictures = picsList;
+    public fun getIsFavorite() : Boolean {
+        return this.isFavorite
     }
 
+    public fun getTags() : String {
+        return this.tags
+    }
 
-    public fun getVideos(): ArrayList<Int>{
-        return this.videos;
-    }
-    public fun setVideos(videosList: ArrayList<Int>){
-        this.videos = videosList;
-    }
-    */
 }

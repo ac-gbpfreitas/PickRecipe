@@ -1,6 +1,7 @@
 package com.example.pickrecipe.db.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import com.example.pickrecipe.db.model.RecipeEntity
 
@@ -27,5 +28,8 @@ interface RecipeDao {
 
     @Update
     suspend fun updateRecipeEntity(RecipeEntity : RecipeEntity)
+
+    @Query("SELECT * FROM recipe WHERE recipeId IN (:ids) ")
+    fun getFavoriteRecipes(ids : List<String>) : List<RecipeEntity>
 
 }

@@ -1,37 +1,42 @@
-package com.example.pickrecipe.adapters
+package com.example.pickrecipe.unused
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pickrecipe.R
-import com.example.pickrecipe.db.model.RecipeEntity
-import com.example.pickrecipe.unused.User
+import com.example.pickrecipe.json.RecipeJson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe_list.view.*
-import java.text.DecimalFormat
 
-class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
+class RecipeAdapterTest : RecyclerView.Adapter<RecipeAdapterTest.RecipeViewHolder>{
 
-    var recipeList = emptyList<RecipeEntity>();
+    var recipeList = emptyList<RecipeJson>();
+    var context : Context;
+
+    //constructor
+    constructor(newList : List<RecipeJson>, newContext: Context) : super(){
+        this.context = newContext;
+        this.recipeList = newList as ArrayList<RecipeJson>;
+    }
 
     inner class RecipeViewHolder(@NonNull itemView : View) : RecyclerView.ViewHolder(itemView){
         lateinit var textTitle   : TextView;
         lateinit var textRating  : TextView;
         lateinit var textDetails : TextView;
         lateinit var imageRecipe : ImageView;
+        lateinit var imageStar   : ImageView;
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : RecipeViewHolder {
         var itemView : View = LayoutInflater.from(parent.context).inflate(
-            R.layout.recycler_recipe_list,
-            parent,
-            false
+                R.layout.recycler_recipe_list,
+                parent,
+                false
         );
 
         var recipeHolder = RecipeViewHolder(itemView);
@@ -40,8 +45,7 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         recipeHolder.textDetails = itemView.textViewDetails;
         recipeHolder.textRating  = itemView.textViewRating;
         recipeHolder.imageRecipe = itemView.imageViewDish;
-        //recipeHolder.imageStar   = itemView.imageViewStar;
-
+//        recipeHolder.imageStar   = itemView.imageViewStar;
 
         return recipeHolder;
     }
@@ -49,40 +53,31 @@ class RecipeAdapter () : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.textTitle.text = this.recipeList[position].recipeTitle;
         holder.textDetails.text = this.recipeList[position].details;
+        holder.textRating.text = this.recipeList[position].rating.toString();
 
-        val df = DecimalFormat("#.##")
-        holder.textRating.text = "Rating: ${df.format(this.recipeList[position].rating)}";
-
-        val bundle = bundleOf(
-            "id" to this.recipeList[position].recipeId,
-            "title" to this.recipeList[position].recipeTitle,
-            "rating" to this.recipeList[position].rating.toString(),
-            "details" to this.recipeList[position].details,
-            "directions" to this.recipeList[position].directions,
-            "picture" to this.recipeList[position].picture,
-            "ingredients" to this.recipeList[position].ingredients,
-            "comments" to this.recipeList[position].comments,
-            "tags" to this.recipeList[position].tags
-        );
-
-        holder.itemView.recipeList.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.DetailsFragmentRecipe,bundle);
-        }
 
         if(recipeList[position].picture == ""){
-            holder.imageRecipe.setImageResource(R.drawable.food);
+            Picasso.get().load(R.drawable.food).into(holder.imageRecipe);
         } else {
             Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
         }
-    }
 
+        /*
+        holder.imageStar.setOnClickListener {
+            holder.imageStar.alpha = 0.75f;
+            this.currentUser.getBookMarksRecipe().add(this.recipeList[position]);
+        }
+         */
+    }
     override fun getItemCount(): Int {
         return this.recipeList.size;
     }
-
-    fun setData(newList : List<RecipeEntity>){
+/*
+    fun setData(/*newUser : User,*/ newList : List<RecipeEntity>){
+        //this.currentUser = newUser;
         this.recipeList = newList;
         notifyDataSetChanged();
     }
 
+ */
 }

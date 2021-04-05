@@ -1,24 +1,18 @@
-package com.example.pickrecipe.fragment.display
+package com.example.pickrecipe.ui.offline
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pickrecipe.R
 import com.example.pickrecipe.adapters.DetailRecipeAdapter
-import com.example.pickrecipe.db.model.RecipeEntity
-import com.example.pickrecipe.model.Ingredient
 import com.example.pickrecipe.model.Recipe
-import com.example.pickrecipe.viewmodel.RecipeViewModel
-import kotlinx.android.synthetic.main.fragment_details_recipe.view.*
+import kotlinx.android.synthetic.main.fragment_details_recipe_offline.view.*
 
 
-class DetailsFragmentRecipe : Fragment() {
-
+class DetailsFragmentRecipeOffline : Fragment(), DetailRecipeAdapter.ListItemListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +20,6 @@ class DetailsFragmentRecipe : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_details_recipe, container, false);
 
-        var mRecipeViewModel : RecipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java);
-        
         var id = arguments?.getString("id");
         var title = arguments?.getString("title");
         var rating = arguments?.getString("rating");
@@ -36,14 +28,17 @@ class DetailsFragmentRecipe : Fragment() {
         var directions = arguments?.getString("directions");
         var ingredients = arguments?.getString("ingredients");
         var comments = arguments?.getString("comments");
+        var tags = arguments?.getString("tags");
 
+        var pantryCheck = "You are in offline mode. Please login for pantry check."
 
         var recipeDetail = Recipe(
-                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!
+                id!!,title!!,details!!,directions!!,rating!!.toDouble(),picture!!,ingredients!!,comments!!,pantryCheck,
+            false,tags!!
         );
 
 
-        var recipeDetailAdapter = DetailRecipeAdapter();
+        var recipeDetailAdapter = DetailRecipeAdapter(this@DetailsFragmentRecipeOffline,true);
         recipeDetailAdapter.setData(recipeDetail);
 
         val recyclerView = view.recyclerViewDetail;
@@ -53,4 +48,19 @@ class DetailsFragmentRecipe : Fragment() {
         setHasOptionsMenu(true);
         return view;
     }
+
+    override fun submitComment(comment: String, userRating: Double) {
+    }
+
+    override fun updateRating(newRating: Double) {
+    }
+
+    override fun addFavorite(id: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeFavorite(id: String) {
+        TODO("Not yet implemented")
+    }
+
 }

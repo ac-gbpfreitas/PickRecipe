@@ -1,13 +1,16 @@
 package com.example.pickrecipe.ui.favorites
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.pickrecipe.db.data.RecipeIngredientDatabase
+import com.example.pickrecipe.db.model.RecipeEntity
 
-class FavoritesViewModel : ViewModel() {
+class FavoritesViewModel (application: Application) : AndroidViewModel(application) {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is favorites Fragment"
+    private val database = RecipeIngredientDatabase.getDatabase(application)
+
+    fun getFavoriteRecipes(ids : List<String>): List<RecipeEntity> {
+        return database?.recipeDao()?.getFavoriteRecipes(ids)!!
     }
-    val text: LiveData<String> = _text
+
 }
