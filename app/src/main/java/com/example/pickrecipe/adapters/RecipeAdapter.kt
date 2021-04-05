@@ -43,7 +43,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         recipeHolder.textDetails = itemView.textViewDetails;
         recipeHolder.textRating  = itemView.textViewRating;
         recipeHolder.imageRecipe = itemView.imageViewDish;
-        recipeHolder.imageStar   = itemView.imageViewStar;
+        //recipeHolder.imageStar   = itemView.imageViewStar;
 
         return recipeHolder;
     }
@@ -74,7 +74,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
         } else {
             Picasso.get().load(recipeList[position].picture).into(holder.imageRecipe);
         }
-
+        /*
         holder.imageStar.setOnClickListener {
             if(holder.imageStar.alpha != 0.75f){
                 holder.imageStar.alpha = 0.75f;
@@ -82,6 +82,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(){
                 holder.imageStar.alpha = 0.25f;
             }
         }
+         */
     }
 
     override fun getItemCount(): Int {

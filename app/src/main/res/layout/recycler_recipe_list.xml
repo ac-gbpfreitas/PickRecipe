@@ -29,7 +29,7 @@
                 android:layout_weight="0.95"
                 android:text="TextView"
                 android:textSize="36sp" />
-
+<!--
             <ImageView
                 android:id="@+id/imageViewStar"
                 android:layout_width="30dp"
@@ -38,6 +38,7 @@
                 android:alpha="0.25"
                 app:srcCompat="@drawable/star"
                 tools:layout_gravity="top" />
+-->
         </LinearLayout>
 
         <ImageView
